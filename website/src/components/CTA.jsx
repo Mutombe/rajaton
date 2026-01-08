@@ -6,7 +6,7 @@ import { ArrowRight, Phone, Mail, Calendar } from 'lucide-react'
 function CTASection({ variant = 'default' }) {
   if (variant === 'simple') {
     return (
-      <section className="section-padding bg-rajaton-cream niveau-font ">
+      <section className="section-padding bg-rajaton-cream niveau-font">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
