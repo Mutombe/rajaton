@@ -29,8 +29,8 @@ function App() {
 
   return (
     <ModalProvider>
-      <div>
-                          <style jsx>{`
+      <div className="niveau-font">
+<style jsx>{`
             /* Niveau Grotesk Font Face - Regular */
             @font-face {
               font-family: "Niveau Grotesk";
@@ -49,8 +49,67 @@ function App() {
               font-display: swap;
             }
 
+            /* TRYTonos Font Face - Light */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-Light.ttf") format("truetype");
+              font-weight: 300;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            /* TRYTonos Font Face - Regular */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-Regular.ttf") format("truetype");
+              font-weight: 400;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            /* TRYTonos Font Face - Medium */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-Medium.ttf") format("truetype");
+              font-weight: 500;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            /* TRYTonos Font Face - SemiBold */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-SemiBold.ttf") format("truetype");
+              font-weight: 600;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            /* TRYTonos Font Face - Bold */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-Bold.ttf") format("truetype");
+              font-weight: 700;
+              font-style: normal;
+              font-display: swap;
+            }
+
+            /* TRYTonos Font Face - Italic */
+            @font-face {
+              font-family: "TRYTonos";
+              src: url("./TRYTonos-Italic.ttf") format("truetype");
+              font-weight: 400;
+              font-style: italic;
+              font-display: swap;
+            }
+
             .niveau-font {
               font-family: "Niveau Grotesk", "Inter", "Segoe UI", Tahoma, Geneva,
+                Verdana, sans-serif;
+            }
+
+            .trytonos-font {
+              font-family: "TRYTonos", "Inter", "Segoe UI", Tahoma, Geneva,
                 Verdana, sans-serif;
             }
 

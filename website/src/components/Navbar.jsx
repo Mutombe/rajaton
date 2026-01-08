@@ -1,14 +1,19 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
+import { 
+  Menu, X, ChevronDown, ArrowRight, 
+  Home, Layers, Info, Users, Rocket, FileText, Mail 
+} from 'lucide-react'
 
+// Updated configuration with Icons
 const navLinks = [
-  { name: 'Home', path: '/' },
+  // --- LEFT SIDE (3 Links) ---
+  { name: 'Home', path: '/', icon: Home },
   { 
     name: 'Services', 
-    path: '/services',
+    path: '/services', 
+    icon: Layers,
     submenu: [
       { name: 'Key Account Management', path: '/services#key-accounts' },
       { name: 'Merchandising & Sales', path: '/services#merchandising' },
@@ -16,11 +21,13 @@ const navLinks = [
       { name: 'Private Label Development', path: '/services#private-label' },
     ]
   },
-  { name: 'About', path: '/about' },
-  { name: 'Team', path: '/team' },
-  { name: 'Careers', path: '/careers' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Contact', path: '/contact' },
+  { name: 'About', path: '/about', icon: Info },
+  
+  // --- RIGHT SIDE (4 Links) ---
+  { name: 'Team', path: '/team', icon: Users },
+  { name: 'Careers', path: '/careers', icon: Rocket },
+  { name: 'Blog', path: '/blog', icon: FileText },
+  { name: 'Contact', path: '/contact', icon: Mail },
 ]
 
 function Navbar() {
@@ -47,6 +54,60 @@ function Navbar() {
     return location.pathname.startsWith(path)
   }
 
+  // Helper to render a single desktop link to avoid code duplication
+  const renderDesktopLink = (link) => (
+    <div 
+      key={link.name}
+      className="relative"
+      onMouseEnter={() => link.submenu && setActiveSubmenu(link.name)}
+      onMouseLeave={() => setActiveSubmenu(null)}
+    >
+      <Link
+        to={link.path}
+        className={`nav-link px-3 py-2 flex items-center gap-2 text-sm font-medium transition-all duration-200 hover:text-rajaton-red ${
+          isActive(link.path) ? 'text-rajaton-red bg-rajaton-red/5 rounded-lg' : 'text-rajaton-charcoal'
+        }`}
+      >
+        <link.icon size={16} className={isActive(link.path) ? 'text-rajaton-red' : 'text-rajaton-slate'} />
+        {link.name}
+        {link.submenu && (
+          <ChevronDown 
+            size={14} 
+            className={`transition-transform duration-300 ${
+              activeSubmenu === link.name ? 'rotate-180' : ''
+            }`}
+          />
+        )}
+      </Link>
+
+      {/* Submenu */}
+      <AnimatePresence>
+        {link.submenu && activeSubmenu === link.name && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+          >
+            <div className="bg-white rounded-2xl shadow-strong border border-gray-100 py-3 min-w-[260px] overflow-hidden">
+              {link.submenu.map((sublink) => (
+                <Link
+                  key={sublink.name}
+                  to={sublink.path}
+                  className="flex items-center gap-3 px-5 py-3 text-rajaton-slate hover:text-rajaton-red hover:bg-rajaton-cream transition-all duration-200 group"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-rajaton-red/30 group-hover:bg-rajaton-red transition-colors" />
+                  <span className="font-medium text-sm">{sublink.name}</span>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+
   return (
     <>
       <motion.nav
@@ -62,13 +123,13 @@ function Navbar() {
         <div className="container-custom">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to="/" className="relative z-10">
+            <Link to="/" className="relative z-10 flex-shrink-0">
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-3"
               >
-                <div className="w-10 h-10 bg-rajaton-red rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-rajaton-red rounded-xl flex items-center justify-center shadow-lg shadow-rajaton-red/20">
                   <span className="text-white font-display font-bold text-xl">R</span>
                 </div>
                 <span className="font-display text-2xl font-bold text-rajaton-charcoal">
@@ -77,71 +138,32 @@ function Navbar() {
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <div 
-                  key={link.name}
-                  className="relative"
-                  onMouseEnter={() => link.submenu && setActiveSubmenu(link.name)}
-                  onMouseLeave={() => setActiveSubmenu(null)}
-                >
-                  <Link
-                    to={link.path}
-                    className={`nav-link px-4 py-2 flex items-center gap-1 ${
-                      isActive(link.path) ? 'active' : ''
-                    }`}
-                  >
-                    {link.name}
-                    {link.submenu && (
-                      <ChevronDown 
-                        size={16} 
-                        className={`transition-transform duration-300 ${
-                          activeSubmenu === link.name ? 'rotate-180' : ''
-                        }`}
-                      />
-                    )}
-                  </Link>
+            {/* Desktop Navigation (Split Layout) */}
+            <div className="hidden lg:flex items-center justify-center flex-1 px-8">
+              {/* Left Group (3 Links) */}
+              <div className="flex items-center gap-1">
+                {navLinks.slice(0, 3).map(renderDesktopLink)}
+              </div>
 
-                  {/* Submenu */}
-                  <AnimatePresence>
-                    {link.submenu && activeSubmenu === link.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 pt-2"
-                      >
-                        <div className="trytonos-font bg-white rounded-2xl shadow-strong border border-gray-100 py-3 min-w-[280px] overflow-hidden">
-                          {link.submenu.map((sublink, idx) => (
-                            <Link
-                              key={sublink.name}
-                              to={sublink.path}
-                              className="flex items-center gap-3 px-5 py-3 text-rajaton-slate hover:text-rajaton-red hover:bg-rajaton-cream transition-all duration-200 group"
-                            >
-                              <span className="w-2 h-2 rounded-full bg-rajaton-red/30 group-hover:bg-rajaton-red transition-colors" />
-                              <span className="font-medium trytonos-font">{sublink.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+              {/* The "Split" Gap */}
+              <div className="w-24 xl:w-32 h-px bg-transparent mx-2" aria-hidden="true" />
+
+              {/* Right Group (4 Links) */}
+              <div className="flex items-center gap-1">
+                {navLinks.slice(3).map(renderDesktopLink)}
+              </div>
             </div>
 
             {/* CTA Button */}
-            <div className="hidden lg:block">
+            <div className="hidden lg:block flex-shrink-0">
               <Link to="/contact">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="btn-primary group trytonos-font"
+                  className="btn-primary group !py-2.5 !px-5 text-sm"
                 >
                   Get Started
-                  <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
                 </motion.button>
               </Link>
             </div>
@@ -149,7 +171,7 @@ function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-10 p-2 text-rajaton-charcoal"
+              className="lg:hidden relative z-10 p-2 text-rajaton-charcoal hover:bg-gray-100 rounded-lg transition-colors"
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -174,7 +196,7 @@ function Navbar() {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="h-full pt-24 pb-8 px-6 overflow-y-auto"
             >
-              <div className="space-y-1">
+              <div className="space-y-2">
                 {navLinks.map((link, idx) => (
                   <motion.div
                     key={link.name}
@@ -184,21 +206,25 @@ function Navbar() {
                   >
                     <Link
                       to={link.path}
-                      className={`block py-4 text-2xl font-display font-semibold transition-colors ${
+                      className={`flex items-center gap-4 p-4 rounded-xl transition-all ${
                         isActive(link.path) 
-                          ? 'text-rajaton-red' 
-                          : 'text-rajaton-charcoal hover:text-rajaton-red'
+                          ? 'bg-rajaton-red/5 text-rajaton-red' 
+                          : 'text-rajaton-charcoal hover:bg-gray-50'
                       }`}
+                      onClick={() => !link.submenu && setIsMobileMenuOpen(false)}
                     >
-                      {link.name}
+                      <link.icon size={24} className={isActive(link.path) ? 'text-rajaton-red' : 'text-rajaton-slate'} />
+                      <span className="text-xl font-display font-semibold">{link.name}</span>
                     </Link>
+                    
                     {link.submenu && (
-                      <div className="ml-4 space-y-2 mb-4">
+                      <div className="ml-14 space-y-3 mt-2 mb-4 border-l-2 border-gray-100 pl-4">
                         {link.submenu.map((sublink) => (
                           <Link
                             key={sublink.name}
                             to={sublink.path}
-                            className="block py-2 text-rajaton-slate hover:text-rajaton-red transition-colors"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-1 text-rajaton-slate hover:text-rajaton-red transition-colors"
                           >
                             {sublink.name}
                           </Link>
@@ -213,11 +239,15 @@ function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="mt-8"
+                className="mt-8 px-4"
               >
-                <Link to="/contact" className="btn-primary w-full justify-center">
+                <Link 
+                  to="/contact" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="btn-primary w-full justify-center py-4 text-lg"
+                >
                   Get Started
-                  <ArrowRight size={18} className="ml-2" />
+                  <ArrowRight size={20} className="ml-2" />
                 </Link>
               </motion.div>
 
@@ -226,7 +256,7 @@ function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="mt-12 pt-8 border-t border-gray-200"
+                className="mt-12 pt-8 border-t border-gray-100 text-center"
               >
                 <p className="text-rajaton-slate text-sm mb-2">Get in touch</p>
                 <a 

@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   Heart
 } from 'lucide-react'
+import { FaXTwitter } from "react-icons/fa6";
 import { useModal } from '../hooks/useModal'
 
 const footerLinks = {
@@ -36,7 +37,7 @@ const footerLinks = {
 
 const socialLinks = [
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/rajaton' },
-  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/rajaton' },
+  { name: 'Twitter', icon: FaXTwitter, href: 'https://twitter.com/rajaton' },
   { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/rajaton' },
   { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/rajaton' },
 ]

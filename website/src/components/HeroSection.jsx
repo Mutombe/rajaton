@@ -1,56 +1,149 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowRight, Play, Check, TrendingUp, Users, Truck, Award } from 'lucide-react'
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Check, TrendingUp, Award, Users, Globe } from 'lucide-react';
+import { FaPersonWalking } from "react-icons/fa6";
 
+// --- Configuration ---
 const features = [
   { icon: TrendingUp, text: 'Nationwide distribution coverage' },
   { icon: Users, text: 'Expert merchandising teams' },
   { icon: Award, text: 'Private label development' },
-]
+];
 
 const floatingCards = [
-  { value: '150+', label: 'Retail Partners', icon: Users, position: 'top-20 right-10' },
-  { value: '98%', label: 'Client Retention', icon: Award, position: 'bottom-32 left-10' },
-]
+  { value: '150+', label: 'Retail Partners', icon: FaPersonWalking, color: 'bg-blue-50 text-blue-600', position: 'top-[15%] right-[10%] delay-0' },
+  { value: '98%', label: 'Client Retention', icon: Award, color: 'bg-yellow-50 text-yellow-600', position: 'top-[45%] right-[25%] delay-1000' },
+  { value: '9 Prov', label: 'Coverage', icon: Globe, color: 'bg-green-50 text-green-600', position: 'bottom-[20%] right-[5%] delay-2000' },
+];
 
-function HeroSection() {
+const backgroundImages = {
+  left: "/4.jpg", // Logistics
+  right: "/5.jpg", // Meeting
+  full: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" // City
+};
+
+// --- MOBILE BACKGROUND (Standard Carousel: Right to Left) ---
+const MobileBackground = () => {
+  const images = Object.values(backgroundImages);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden hero-gradient niveau-font">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient Mesh */}
-        <div className="absolute inset-0 gradient-mesh" />
-        
-        {/* Animated Blobs */}
-        <div className="absolute top-0 -left-40 w-80 h-80 bg-rajaton-red/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob" />
-        <div className="absolute top-0 -right-40 w-80 h-80 bg-rajaton-red-light/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-32 left-40 w-80 h-80 bg-rajaton-red/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000" />
-        
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 bg-hero-pattern opacity-50" />
-        
-        {/* Decorative Lines */}
-        <svg className="absolute bottom-0 left-0 w-full h-64 opacity-20" viewBox="0 0 1440 320">
-          <path 
-            fill="none" 
-            stroke="#f94449" 
-            strokeWidth="2"
-            d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,144C672,139,768,181,864,186.7C960,192,1056,160,1152,138.7C1248,117,1344,107,1392,101.3L1440,96"
-          />
-        </svg>
+    <div className="absolute inset-0 z-0 overflow-hidden md:hidden bg-rajaton-charcoal">
+      <AnimatePresence mode="popLayout">
+        <motion.img
+          key={index}
+          src={images[index]}
+          alt="Background"
+          initial={{ x: '100%', opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: '-100%', opacity: 0 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </AnimatePresence>
+      {/* Heavy overlay for mobile so text pops */}
+      <div className="absolute inset-0 bg-white/90" />
+    </div>
+  );
+};
+
+// --- DESKTOP BACKGROUND (Complex Split/Reveal Animation) ---
+const DesktopBackground = () => {
+  const [phase, setPhase] = useState('split'); 
+
+  useEffect(() => {
+    const cycle = async () => {
+      setPhase('split');
+      await new Promise(r => setTimeout(r, 4000));
+      setPhase('transition-out');
+      await new Promise(r => setTimeout(r, 1000));
+      setPhase('full');
+      await new Promise(r => setTimeout(r, 4000));
+      setPhase('full-exit');
+      await new Promise(r => setTimeout(r, 1000));
+    };
+
+    const interval = setInterval(() => { cycle(); }, 10000); 
+    cycle(); 
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden hidden md:block bg-rajaton-charcoal">
+      {/* Layer 1: The "Third" Full Image */}
+      <motion.div 
+        className="absolute inset-0 w-full h-full"
+        animate={{ 
+          x: phase === 'full-exit' ? '-100%' : '0%',
+          opacity: phase === 'full-exit' ? 0.5 : 1
+        }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
+      >
+         <img src={backgroundImages.full} alt="Full BG" className="w-full h-full object-cover opacity-40" />
+      </motion.div>
+
+      {/* Layer 2: Split Images */}
+      <div className="absolute inset-0 flex">
+        <motion.div 
+          className="relative w-1/2 h-full overflow-hidden"
+          initial={{ y: '-100%' }}
+          animate={{ 
+            y: phase === 'split' ? '0%' : (phase === 'transition-out' ? '100%' : (phase === 'full' ? '100%' : '-100%'))
+          }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          <div className="absolute inset-0 bg-rajaton-charcoal/60 mix-blend-multiply z-10" />
+          <img src={backgroundImages.left} alt="Left" className="w-full h-full object-cover" />
+        </motion.div>
+
+        <motion.div 
+          className="relative w-1/2 h-full overflow-hidden"
+          initial={{ y: '100%' }}
+          animate={{ 
+            y: phase === 'split' ? '0%' : (phase === 'transition-out' ? '-100%' : (phase === 'full' ? '-100%' : '100%'))
+          }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          <div className="absolute inset-0 bg-rajaton-red/20 mix-blend-multiply z-10" />
+          <img src={backgroundImages.right} alt="Right" className="w-full h-full object-cover" />
+        </motion.div>
       </div>
 
-      <div className="container-custom relative z-10 pt-32 pb-20">
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent z-20" />
+    </div>
+  );
+};
+
+// --- Main Hero Component ---
+function HeroSection() {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden niveau-font">
+      
+      {/* Render both backgrounds, CSS controls visibility */}
+      <MobileBackground />
+      <DesktopBackground />
+
+      <div className="container-custom relative z-30 pt-32 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              className="flex justify-center lg:justify-start"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-rajaton-red/10 text-rajaton-red rounded-full text-sm font-medium mb-6">
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-rajaton-red/10 text-rajaton-red rounded-full text-sm font-medium mb-6 border border-rajaton-red/20 backdrop-blur-sm">
                 <span className="w-2 h-2 bg-rajaton-red rounded-full animate-pulse" />
                 South Africa's Premier FMCG Partner
               </span>
@@ -65,16 +158,7 @@ function HeroSection() {
               Brand Solutions
               <br />
               <span className="relative">
-                <span className="gradient-text">for South Africa</span>
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
-                  <path 
-                    d="M2 10C50 4 100 2 150 6C200 10 250 4 298 8" 
-                    stroke="#f94449" 
-                    strokeWidth="4" 
-                    strokeLinecap="round"
-                    className="animate-draw"
-                  />
-                </svg>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rajaton-red to-orange-600">for South Africa</span>
               </span>
             </motion.h1>
 
@@ -82,7 +166,7 @@ function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-rajaton-slate max-w-lg leading-relaxed"
+              className="text-xl text-rajaton-slate max-w-lg leading-relaxed font-medium mx-auto lg:mx-0"
             >
               Your trusted partner for route-to-market excellence, key account management, 
               and private label development across the nation.
@@ -93,14 +177,14 @@ function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-3"
+              className="space-y-3 flex flex-col items-center lg:items-start"
             >
               {features.map((feature, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <div className="w-6 h-6 rounded-full bg-rajaton-red/10 flex items-center justify-center">
                     <Check size={14} className="text-rajaton-red" />
                   </div>
-                  <span className="text-rajaton-slate">{feature.text}</span>
+                  <span className="text-rajaton-slate font-medium">{feature.text}</span>
                 </div>
               ))}
             </motion.div>
@@ -110,153 +194,67 @@ function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start"
             >
               <Link to="/services">
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="btn-primary group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 bg-rajaton-red text-white rounded-full font-bold shadow-lg shadow-rajaton-red/30 flex items-center gap-2 group"
                 >
                   Explore Services
-                  <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
                 </motion.button>
               </Link>
               <Link to="/about">
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="btn-secondary"
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(0,0,0,0.05)' }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-rajaton-charcoal text-rajaton-charcoal rounded-full font-bold"
                 >
                   Learn More
                 </motion.button>
               </Link>
             </motion.div>
-
-            {/* Trust Badges */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex items-center gap-6 pt-8"
-            >
-              <p className="text-sm text-rajaton-slate">Trusted by leading brands</p>
-              <div className="flex items-center gap-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-12 h-12 bg-gray-200 rounded-lg opacity-60" />
-                ))}
-              </div>
-            </motion.div>
           </div>
 
-          {/* Right Content - Visual */}
-          <div className="relative lg:h-[600px]">
-            {/* Main Image Container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Background Shape */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-rajaton-red/20 to-rajaton-red-light/10 rounded-3xl blur-2xl" />
-              
-              {/* Main Card */}
-              <div className="relative bg-white rounded-3xl shadow-strong p-8 overflow-hidden">
-                {/* Decorative Corner */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-rajaton-red/5 rounded-bl-full" />
-                
-                {/* Content Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  {[
-                    { icon: Truck, label: 'Distribution', value: '9 Provinces' },
-                    { icon: Users, label: 'Retailers', value: '150+' },
-                    { icon: TrendingUp, label: 'Growth', value: '45%' },
-                    { icon: Award, label: 'Experience', value: '15+ Years' },
-                  ].map((item, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4 + idx * 0.1 }}
-                      className="bg-rajaton-off-white rounded-2xl p-4"
-                    >
-                      <item.icon size={24} className="text-rajaton-red mb-2" />
-                      <p className="text-2xl font-display font-bold text-rajaton-charcoal">
-                        {item.value}
-                      </p>
-                      <p className="text-sm text-rajaton-slate">{item.label}</p>
-                    </motion.div>
-                  ))}
+          {/* Right Content - Floating Cards Only (Hidden on Mobile) */}
+          <div className="relative h-[500px] lg:h-[700px] hidden lg:block pointer-events-none">
+            {floatingCards.map((card, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  y: [0, -20, 0] // Floating animation
+                }}
+                transition={{ 
+                  opacity: { delay: 0.5 + (idx * 0.2), duration: 0.5 },
+                  scale: { delay: 0.5 + (idx * 0.2), duration: 0.5 },
+                  y: { 
+                    repeat: Infinity, 
+                    duration: 4 + idx, 
+                    ease: "easeInOut",
+                    delay: idx 
+                  }
+                }}
+                className={`absolute ${card.position} p-5 rounded-2xl bg-white/80 backdrop-blur-md shadow-strong border border-white/50 flex items-center gap-4 max-w-[240px] z-40`}
+              >
+                <div className={`w-12 h-12 rounded-xl ${card.color} flex items-center justify-center shadow-sm`}>
+                  <card.icon size={24} />
                 </div>
-
-                {/* Progress Bar */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-rajaton-slate">National Coverage</span>
-                    <span className="font-semibold text-rajaton-red">98%</span>
-                  </div>
-                  <div className="h-2 bg-rajaton-off-white rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: '98%' }}
-                      transition={{ delay: 0.8, duration: 1, ease: 'easeOut' }}
-                      className="h-full bg-gradient-to-r from-rajaton-red to-rajaton-red-light rounded-full"
-                    />
-                  </div>
+                <div>
+                  <p className="text-2xl font-bold text-rajaton-charcoal">
+                    {card.value}
+                  </p>
+                  <p className="text-sm font-medium text-rajaton-slate">{card.label}</p>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Floating Elements */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="absolute -right-4 top-20 bg-white rounded-2xl shadow-strong p-4 hidden lg:flex items-center gap-3"
-            >
-              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                <TrendingUp size={24} className="text-green-600" />
-              </div>
-              <div>
-                <p className="text-sm text-rajaton-slate">Revenue Growth</p>
-                <p className="text-xl font-bold text-rajaton-charcoal">+45%</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="absolute -left-4 bottom-32 bg-white rounded-2xl shadow-strong p-4 hidden lg:flex items-center gap-3"
-            >
-              <div className="w-12 h-12 bg-rajaton-cream rounded-xl flex items-center justify-center">
-                <Award size={24} className="text-rajaton-red" />
-              </div>
-              <div>
-                <p className="text-sm text-rajaton-slate">Client Satisfaction</p>
-                <p className="text-xl font-bold text-rajaton-charcoal">98%</p>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-6 h-10 border-2 border-rajaton-charcoal/30 rounded-full flex justify-center pt-2"
-        >
-          <div className="w-1.5 h-1.5 bg-rajaton-red rounded-full" />
-        </motion.div>
-      </motion.div>
     </section>
   )
 }
