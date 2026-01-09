@@ -18,12 +18,12 @@ const floatingCards = [
 ];
 
 const backgroundImages = {
-  left: "/4.jpg", // Logistics
-  right: "/5.jpg", // Meeting
-  full: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" // City
+  left: "/4.jpg",
+  right: "/5.jpg",
+  full: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80"
 };
 
-// --- MOBILE BACKGROUND (Standard Carousel: Right to Left) ---
+// --- MOBILE BACKGROUND ---
 const MobileBackground = () => {
   const images = Object.values(backgroundImages);
   const [index, setIndex] = useState(0);
@@ -49,13 +49,12 @@ const MobileBackground = () => {
           className="absolute inset-0 w-full h-full object-cover"
         />
       </AnimatePresence>
-      {/* Heavy overlay for mobile so text pops */}
       <div className="absolute inset-0 bg-white/90" />
     </div>
   );
 };
 
-// --- DESKTOP BACKGROUND (Complex Split/Reveal Animation) ---
+// --- DESKTOP BACKGROUND ---
 const DesktopBackground = () => {
   const [phase, setPhase] = useState('split'); 
 
@@ -78,7 +77,7 @@ const DesktopBackground = () => {
 
   return (
     <div className="absolute inset-0 z-0 overflow-hidden hidden md:block bg-rajaton-charcoal">
-      {/* Layer 1: The "Third" Full Image */}
+      {/* Layer 1: Full Image */}
       <motion.div 
         className="absolute inset-0 w-full h-full"
         animate={{ 
@@ -117,7 +116,6 @@ const DesktopBackground = () => {
         </motion.div>
       </div>
 
-      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent z-20" />
     </div>
   );
@@ -128,7 +126,6 @@ function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden niveau-font">
       
-      {/* Render both backgrounds, CSS controls visibility */}
       <MobileBackground />
       <DesktopBackground />
 
@@ -157,8 +154,27 @@ function HeroSection() {
             >
               Brand Solutions
               <br />
-              <span className="relative">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rajaton-red to-orange-600">for South Africa</span>
+              {/* RESTORED STYLISH UNDERLINE */}
+              <span className="relative inline-block">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rajaton-red to-orange-600 z-10 relative">
+                  for South Africa
+                </span>
+                <svg 
+                  className="absolute -bottom-2 left-0 w-full z-0" 
+                  viewBox="0 0 300 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <motion.path 
+                    d="M2 10C50 4 100 2 150 6C200 10 250 4 298 8" 
+                    stroke="#f94449" 
+                    strokeWidth="4" 
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: 1 }}
+                    transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                  />
+                </svg>
               </span>
             </motion.h1>
 
