@@ -10,7 +10,11 @@ function AnimatedNumber({ value, duration = 2, suffix = '', prefix = '' }) {
   useEffect(() => {
     if (!isInView) return
 
-    const numericValue = parseInt(value.replace(/[^0-9]/g, ''))
+    // Handle both string and number values
+    const numericValue = typeof value === 'string' 
+      ? parseInt(value.replace(/[^0-9]/g, ''))
+      : value
+
     const startTime = Date.now()
     const endTime = startTime + duration * 1000
 

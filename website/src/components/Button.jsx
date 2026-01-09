@@ -12,7 +12,7 @@ function Button({
   children, 
   variant = 'primary', 
   size = 'default',
-  icon,
+  icon: Icon, // Rename to Icon (capitalized)
   iconPosition = 'right',
   loading = false,
   disabled = false,
@@ -38,14 +38,14 @@ function Button({
         <Loader2 size={18} className="animate-spin mr-2" />
       )}
       
-      {icon && iconPosition === 'left' && !loading && (
-        <span className="mr-2">{icon}</span>
+      {Icon && iconPosition === 'left' && !loading && (
+        <Icon size={18} className="mr-2" />
       )}
       
       {children}
       
-      {icon && iconPosition === 'right' && !loading && (
-        <span className="ml-2">{icon}</span>
+      {Icon && iconPosition === 'right' && !loading && (
+        <Icon size={18} className="ml-2" />
       )}
       
       {showArrow && !loading && (
