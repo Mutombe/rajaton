@@ -98,8 +98,8 @@ function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <Link to="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-rajaton-red rounded-xl flex items-center justify-center">
-                <span className="text-white font-display font-bold text-2xl">R</span>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+                <img src="/logo2.png" alt="Rajaton Logo" className="w-10 h-8" />
               </div>
               <span className="font-display text-2xl font-bold">Rajaton</span>
             </Link>

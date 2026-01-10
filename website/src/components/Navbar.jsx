@@ -129,8 +129,8 @@ function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-3"
               >
-                <div className="w-10 h-10 bg-rajaton-red rounded-xl flex items-center justify-center shadow-lg shadow-rajaton-red/20">
-                  <span className="text-white font-display font-bold text-xl">R</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-rajaton-red/20">
+                  <img src="/logo2.png" alt="Rajaton Logo" className="w-9 h-7" />
                 </div>
                 <span className="font-display text-2xl font-bold text-rajaton-charcoal">
                   Rajaton
