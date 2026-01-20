@@ -5,6 +5,7 @@ import {
   Menu, X, ChevronDown, ArrowRight, 
   Home, Layers, Info, Users, Rocket, FileText, Mail 
 } from 'lucide-react'
+import { TiThMenuOutline } from "react-icons/ti";
 
 // Updated configuration with Icons
 const navLinks = [
@@ -129,12 +130,9 @@ function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-3"
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shadow-rajaton-red/20">
-                  <img src="/logo2.png" alt="Rajaton Logo" className="w-9 h-7" />
+                <div className="w-26 h-10 rounded-xl flex items-center justify-center">
+                  <img src="/logo1.png" alt="Rajaton Logo" className="w-22 h-10" />
                 </div>
-                <span className="font-display text-2xl font-bold text-rajaton-charcoal">
-                  Rajaton
-                </span>
               </motion.div>
             </Link>
 
@@ -173,7 +171,7 @@ function Navbar() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden relative z-10 p-2 text-rajaton-charcoal hover:bg-gray-100 rounded-lg transition-colors"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={28} /> : <TiThMenuOutline size={28} />}
             </button>
           </div>
         </div>

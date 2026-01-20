@@ -98,10 +98,9 @@ function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <Link to="/" className="inline-flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center">
-                <img src="/logo2.png" alt="Rajaton Logo" className="w-10 h-8" />
+              <div className="w-20 h-12 rounded-xl flex items-center justify-center">
+                <img src="/logo3.png" alt="Rajaton Logo" className="w-18 h-8" />
               </div>
-              <span className="font-display text-2xl font-bold">Rajaton</span>
             </Link>
             <p className="text-white/70 mb-6 max-w-sm">
               South Africa's trusted brand solutions and distribution partner. 
