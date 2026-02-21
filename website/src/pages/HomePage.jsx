@@ -13,13 +13,13 @@ import { Btn, Counter, Reveal, Stagger, StaggerChild, PxImage, Heading, Orbs, Mo
    floating glass stat cards, and parallax depth
    ═══════════════════════════════════════════════════ */
 const MOSAIC_ITEMS = [
-  { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", alt: "Strategic partnership", accent: "#DC2626" },
-  { src: "/26.jpg", alt: "Logistics warehouse", accent: "#F97316" },
-  { src: "/14.jpg", alt: "Retail merchandising", accent: "#EAB308" },
-  { src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80", alt: "Business strategy", accent: "#8B5CF6" },
-  { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80", alt: "Supply chain", accent: "#06B6D4" },
-  { src: "/19.jpg", alt: "Global shipping", accent: "#10B981" },
-  { src: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80", alt: "Consumer goods", accent: "#EC4899" },
+  { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", alt: "Strategic partnership", accent: "#DC2626", link: "/services/key-account-management" },
+  { src: "/26.jpg", alt: "Logistics warehouse", accent: "#F97316", link: "/services/distribution-logistics" },
+  { src: "/14.jpg", alt: "Retail merchandising", accent: "#EAB308", link: "/services/merchandising-execution" },
+  { src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80", alt: "Business strategy", accent: "#8B5CF6", link: "/services/key-account-management" },
+  { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80", alt: "Supply chain", accent: "#06B6D4", link: "/services/distribution-logistics" },
+  { src: "/19.jpg", alt: "Global shipping", accent: "#10B981", link: "/services/distribution-logistics" },
+  { src: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80", alt: "Consumer goods", accent: "#EC4899", link: "/services/private-label" },
 ];
 
 /* Slot definitions for the 3-column mosaic grid (right-aligned) */
@@ -84,11 +84,11 @@ function HeroMosaic() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
-            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+            <Link to={item.link} className="relative block w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl cursor-pointer">
               <img src={item.src} alt={item.alt} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-115" loading="eager" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-25 transition-opacity duration-700 mix-blend-overlay" style={{ background: item.accent }} />
-            </div>
+            </Link>
           </motion.div>
         );
       })}
@@ -252,11 +252,11 @@ export default function HomePage() {
                     <div key={i} className={`relative flex-shrink-0 mx-2 ${i % 2 === 0 ? "mt-4" : "-mt-2"}`}>
                       <div className="absolute -inset-6 rounded-[3rem] blur-xl" style={{ background: item.accent, opacity: 0.4 }} />
                       <div className="absolute -inset-14 rounded-full blur-3xl" style={{ background: item.accent, opacity: 0.2 }} />
-                      <div className="relative w-[65px] h-[110px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                      <Link to={item.link} className="relative block w-[65px] h-[110px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
                         <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="eager" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
                         <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ background: item.accent }} />
-                      </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -319,7 +319,7 @@ export default function HomePage() {
             <Reveal className="md:col-span-5">
               <div className="relative rounded-[2rem] p-8 md:p-12 h-full min-h-[220px] md:min-h-[260px] flex flex-col justify-between overflow-hidden noise border border-white/[0.06] md:border-0">
                 {/* Background image -- visible on mobile, hidden on md+ where mesh-red takes over */}
-                <img src="/11.jpg" alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="lazy" />
+                <img src="/22.avif" alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="lazy" />
                 {/* Left-heavy gradient overlay for mobile */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/70 to-[#0A0A0A]/30 md:hidden" />
                 <div className="absolute inset-0 bg-[#DC2626]/20 mix-blend-overlay md:hidden" />
@@ -339,14 +339,14 @@ export default function HomePage() {
             {/* 3 stacked stats — right column */}
             <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { val: "200", suf: "+", label: "Brand Partners", sub: "Fortune 500 to emerging", icon: Award, img: "/26.jpg" },
-                { val: "15", suf: "K+", label: "Retail Locations", sub: "Stores served daily", icon: Globe, img: "/19.jpg" },
-                { val: "99.2", suf: "%", label: "On-Time Delivery", sub: "Industry-leading SLA", icon: TrendingUp, img: "/14.jpg" },
+                { val: "200", suf: "+", label: "Brand Partners", sub: "Fortune 500 to emerging", icon: Award, img: "/30.jpg" },
+                { val: "15", suf: "K+", label: "Retail Locations", sub: "Stores served daily", icon: Globe, img: "/29.jpg" },
+                { val: "99.2", suf: "%", label: "On-Time Delivery", sub: "Industry-leading SLA", icon: TrendingUp, img: "/31.jpg" },
               ].map((s, i) => (
                 <Reveal key={i} delay={i * 0.1}>
                   <motion.div className="relative rounded-[1.5rem] p-6 h-full flex flex-col justify-between min-h-[125px] group overflow-hidden border border-white/[0.06]" whileHover={{ y: -4 }}>
                     {/* Background image -- visible on mobile */}
-                    <img src={s.img} alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="lazy" />
+                    <img src={s.img} alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="eager" />
                     {/* Left-heavy gradient overlay for mobile -- opaque left, transparent right */}
                     <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/95 via-[#0A0A0A]/70 to-[#0A0A0A]/25 md:hidden" />
                     {/* Desktop glass-card background */}
