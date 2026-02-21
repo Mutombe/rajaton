@@ -75,6 +75,7 @@ export function Navigation() {
                     src="/logo.png"
                     alt="Rajaton Logo"
                     className="w-24 h-auto"
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -410,7 +411,7 @@ export function Footer({ openPolicy }) {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
               <div className="w-24 rounded-lg  flex items-center justify-center">
-                <img src="/logo.png" alt="Rajaton Logo" className="w-24 h-auto" />
+                <img src="/logo.png" alt="Rajaton Logo" className="w-24 h-auto" loading="eager"/>
               </div>
             </Link>
             <p className="text-white/30 text-sm leading-relaxed max-w-sm">

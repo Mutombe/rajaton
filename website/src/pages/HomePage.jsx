@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, TrendingUp, Shield, Globe, Zap, Award, Star, Quote, CheckCircle2 } from "lucide-react";
@@ -22,34 +22,39 @@ const MOSAIC_ITEMS = [
   { src: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80", alt: "Consumer goods", accent: "#EC4899" },
 ];
 
-function HeroPill({ item, delay, w = "w-[155px]", h = "h-[210px]" }) {
-  return (
-    <motion.div
-      className="relative group"
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {/* Vivid accent glow */}
-      <motion.div
-        className="absolute -inset-3 rounded-[3.5rem] opacity-25 blur-md transition-all duration-700 group-hover:opacity-50 group-hover:blur-lg group-hover:scale-110"
-        style={{ background: item.accent }}
-        animate={{ scale: [1, 1.05, 1] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay * 2 }}
-      />
-      <div className={`relative ${w} ${h} rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl`}>
-        <img src={item.src} alt={item.alt} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-115" loading="eager" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-25 transition-opacity duration-700 mix-blend-overlay" style={{ background: item.accent }} />
-      </div>
-    </motion.div>
-  );
-}
+/* Slot definitions for the 3-column mosaic grid (right-aligned) */
+const SLOTS = [
+  { top: 80, right: 355, w: 150, h: 220 },
+  { top: 320, right: 355, w: 150, h: 190 },
+  { top: 0, right: 175, w: 165, h: 240 },
+  { top: 260, right: 175, w: 165, h: 210 },
+  { top: 490, right: 175, w: 165, h: 170 },
+  { top: 32, right: 0, w: 140, h: 200 },
+  { top: 252, right: 0, w: 140, h: 230 },
+];
 
 function HeroMosaic() {
+  const [order, setOrder] = useState([0, 1, 2, 3, 4, 5, 6]);
+
+  const swap = useCallback(() => {
+    setOrder(prev => {
+      const next = [...prev];
+      const a = Math.floor(Math.random() * 7);
+      let b = Math.floor(Math.random() * 7);
+      while (b === a) b = Math.floor(Math.random() * 7);
+      [next[a], next[b]] = [next[b], next[a]];
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(swap, 3500);
+    return () => clearInterval(id);
+  }, [swap]);
+
   return (
-    <div className="relative w-full flex gap-5 justify-end items-center">
-      {/* ── Floating accent orbs — scattered, animated ── */}
+    <div className="relative w-full" style={{ height: 680 }}>
+      {/* Floating accent orbs */}
       <motion.div className="absolute -top-8 left-[8%] w-16 h-16 rounded-full" style={{ background: "#DC2626" }}
         animate={{ y: [0, -10, 0], scale: [1, 1.15, 1] }} transition={{ duration: 4, repeat: Infinity }} />
       <motion.div className="absolute top-[28%] -left-6 w-10 h-10 rounded-full" style={{ background: "#8B5CF6" }}
@@ -61,26 +66,33 @@ function HeroMosaic() {
       <motion.div className="absolute top-[60%] right-0 w-7 h-7 rounded-full" style={{ background: "#10B981" }}
         animate={{ y: [0, -7, 0] }} transition={{ duration: 4.5, repeat: Infinity, delay: 1.5 }} />
 
-      {/* ── Column 1 — offset down ── */}
-      <div className="flex flex-col gap-5 pt-20">
-        <HeroPill item={MOSAIC_ITEMS[0]} delay={0.2} w="w-[150px]" h="h-[220px]" />
-        <HeroPill item={MOSAIC_ITEMS[3]} delay={0.35} w="w-[150px]" h="h-[190px]" />
-      </div>
+      {/* Animated mosaic pills */}
+      {MOSAIC_ITEMS.map((item, itemIdx) => {
+        const slotIdx = order.indexOf(itemIdx);
+        const slot = SLOTS[slotIdx];
+        return (
+          <motion.div
+            key={itemIdx}
+            className="absolute group"
+            animate={{ top: slot.top, right: slot.right, width: slot.w, height: slot.h }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <motion.div
+              className="absolute -inset-3 rounded-[3.5rem] opacity-25 blur-md group-hover:opacity-50 group-hover:blur-lg transition-all duration-700"
+              style={{ background: item.accent }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl">
+              <img src={item.src} alt={item.alt} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-115" loading="eager" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-25 transition-opacity duration-700 mix-blend-overlay" style={{ background: item.accent }} />
+            </div>
+          </motion.div>
+        );
+      })}
 
-      {/* ── Column 2 — tallest, offset up ── */}
-      <div className="flex flex-col gap-5 -mt-12">
-        <HeroPill item={MOSAIC_ITEMS[1]} delay={0.25} w="w-[165px]" h="h-[240px]" />
-        <HeroPill item={MOSAIC_ITEMS[4]} delay={0.4} w="w-[165px]" h="h-[210px]" />
-        <HeroPill item={MOSAIC_ITEMS[6]} delay={0.5} w="w-[165px]" h="h-[170px]" />
-      </div>
-
-      {/* ── Column 3 — medium, offset mid ── */}
-      <div className="flex flex-col gap-5 pt-8">
-        <HeroPill item={MOSAIC_ITEMS[2]} delay={0.3} w="w-[140px]" h="h-[200px]" />
-        <HeroPill item={MOSAIC_ITEMS[5]} delay={0.45} w="w-[140px]" h="h-[230px]" />
-      </div>
-
-      {/* ── Floating glass stat cards ── */}
+      {/* Floating glass stat cards */}
       <motion.div
         className="absolute top-[18%] left-[5%] z-30 glass-strong rounded-2xl px-5 py-4 shadow-2xl glow-red-sm"
         animate={{ y: [0, -10, 0] }}
@@ -94,8 +106,8 @@ function HeroMosaic() {
             <TrendingUp size={16} className="text-[#DC2626]" />
           </div>
           <div>
-            <p className="text-white font-extrabold text-base  leading-none">+340%</p>
-            <p className="text-white/25 text-[9px]  mt-0.5">Avg Partner Growth</p>
+            <p className="text-white font-extrabold text-base leading-none">+340%</p>
+            <p className="text-white/25 text-[9px] mt-0.5">Avg Partner Growth</p>
           </div>
         </div>
       </motion.div>
@@ -113,12 +125,11 @@ function HeroMosaic() {
             <CheckCircle2 size={16} className="text-[#10B981]" />
           </div>
           <div>
-            <p className="text-white font-extrabold text-base  leading-none">15K+</p>
-            <p className="text-white/25 text-[9px]  mt-0.5">Stores Served Daily</p>
+            <p className="text-white font-extrabold text-base leading-none">15K+</p>
+            <p className="text-white/25 text-[9px] mt-0.5">Stores Served Daily</p>
           </div>
         </div>
       </motion.div>
-
     </div>
   );
 }
@@ -135,15 +146,18 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ═══ HERO + MOSAIC GLOW WRAPPER — contains overflow-x on mobile so glow can bleed vertically ═══ */}
+      <div className="relative z-10 lg:contents" style={{ overflowX: 'clip' }}>
+
       {/* ═══ HERO — Cinematic full-screen, the crown jewel ═══ */}
-      <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden mesh-hero noise">
+      <section ref={heroRef} className="relative z-10 lg:z-auto min-h-screen flex items-center lg:overflow-hidden mesh-hero noise">
         <Orbs variant="red" />
 
         {/* Dot grid */}
         <div className="absolute inset-0 dots pointer-events-none" />
 
         {/* Large watermark letters */}
-        <div className="absolute -left-[5vw] top-1/2 -translate-y-1/2 text-[40vw] font-extrabold text-white/[0.015] leading-none select-none pointer-events-none font-display">R</div>
+        <div className="absolute -left-[5vw] top-[10%] md:top-1/2 md:-translate-y-1/2 text-[75vw] md:text-[40vw] font-extrabold text-white/[0.015] leading-none select-none pointer-events-none font-display">R</div>
 
         {/* Subtle top gradient for depth */}
         <div className="absolute top-0 left-0 right-0 h-[30vh] bg-gradient-to-b from-[#0A0A0A] to-transparent z-[1] pointer-events-none" />
@@ -223,23 +237,28 @@ export default function HomePage() {
               <HeroMosaic />
             </div>
 
-            {/* ── MOBILE: Compact horizontal pill row ── */}
-            <div className="lg:hidden relative">
+            {/* ── MOBILE: Infinite scrolling pill marquee ── */}
+            <div className="lg:hidden relative -mx-5 py-10 mobile-mosaic-zone">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="flex gap-3 justify-center overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+                className="relative"
+                style={{ overflowX: 'clip' }}
               >
-                {MOSAIC_ITEMS.slice(0, 5).map((item, i) => (
-                  <div key={i} className="relative group flex-shrink-0">
-                    <div className="absolute -inset-2 rounded-[2.5rem] opacity-20 blur-sm" style={{ background: item.accent }} />
-                    <div className={`relative w-[68px] ${i % 2 === 0 ? "h-[140px] mt-3" : "h-[160px]"} rounded-[2rem] overflow-hidden border border-white/10 shadow-lg`}>
-                      <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="lazy" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="flex animate-pills whitespace-nowrap">
+                  {[...MOSAIC_ITEMS, ...MOSAIC_ITEMS].map((item, i) => (
+                    <div key={i} className={`relative flex-shrink-0 mx-2 ${i % 2 === 0 ? "mt-4" : "-mt-2"}`}>
+                      <div className="absolute -inset-6 rounded-[3rem] blur-xl" style={{ background: item.accent, opacity: 0.4 }} />
+                      <div className="absolute -inset-14 rounded-full blur-3xl" style={{ background: item.accent, opacity: 0.2 }} />
+                      <div className="relative w-[75px] h-[150px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                        <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="eager" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+                        <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ background: item.accent }} />
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </motion.div>
             </div>
           </div>
@@ -247,7 +266,7 @@ export default function HomePage() {
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 z-10"
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2.5, repeat: Infinity }}
           initial={{ opacity: 0 }}
@@ -258,9 +277,26 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      </div>{/* close glow wrapper */}
+
+      {/* ═══ MOBILE MOSAIC GLOW BRIDGE — ambient color blobs that straddle the hero/marquee boundary ═══
+           These live OUTSIDE both the hero and marquee so they are not clipped by either section's overflow.
+           Negative margins pull them upward into the hero and the marquee covers the lower portion naturally.
+           z-20 ensures they paint above the marquee's opaque background. */}
+      <div className="lg:hidden relative z-20 pointer-events-none" style={{ height: 0 }}>
+        <div className="absolute left-0 right-0" style={{ height: '320px', top: '-160px', overflow: 'visible' }}>
+          <div className="absolute left-[2%] top-[5%] w-[55%] h-[90%] rounded-full blur-[100px]" style={{ background: '#DC2626', opacity: 0.25 }} />
+          <div className="absolute left-[20%] top-[15%] w-[45%] h-[70%] rounded-full blur-[100px]" style={{ background: '#F97316', opacity: 0.18 }} />
+          <div className="absolute right-[0%] top-[8%] w-[50%] h-[85%] rounded-full blur-[100px]" style={{ background: '#8B5CF6', opacity: 0.18 }} />
+          <div className="absolute right-[15%] top-[20%] w-[40%] h-[65%] rounded-full blur-[100px]" style={{ background: '#06B6D4', opacity: 0.14 }} />
+          <div className="absolute left-[35%] top-[0%] w-[35%] h-[60%] rounded-full blur-[80px]" style={{ background: '#10B981', opacity: 0.12 }} />
+          <div className="absolute left-[50%] top-[10%] w-[30%] h-[80%] rounded-full blur-[90px]" style={{ background: '#EC4899', opacity: 0.12 }} />
+        </div>
+      </div>
+
       {/* ═══ MARQUEE ═══ */}
-      <div className="relative bg-[#111] py-4 border-y border-white/5 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
+      <div className="relative z-30 py-4 border-y border-transparent lg:border-white/5 overflow-hidden marquee-bg">
+        <div className="relative flex animate-marquee whitespace-nowrap">
           {Array.from({ length: 2 }, (_, i) => (
             <div key={i} className="flex items-center gap-12 mx-6">
               {["Key Account Management", "Merchandising & Execution", "Distribution & Logistics", "Private Label Development", "47+ Countries", "200+ Brands", "99.2% On-Time"].map((t, j) => (
