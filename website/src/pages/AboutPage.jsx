@@ -42,7 +42,7 @@ export default function AboutPage() {
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
                 <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
-                  <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · Helsinki, Finland</span>
+                  <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · South Africa</span>
                 </span>
                 <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">
                   Limitless<br />by <span className="text-gradient">Design</span>
