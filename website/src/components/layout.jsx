@@ -406,8 +406,8 @@ export function Footer({ openPolicy }) {
   return (
     <footer className="relative mesh-dark border-t border-white/5">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#DC2626]/20 to-transparent" />
-      <div className="ctn pt-28 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 pt-10">
+      <div className="ctn pt-16 md:pt-28 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 pt-6 md:pt-10">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
               <div className="w-24 rounded-lg  flex items-center justify-center">

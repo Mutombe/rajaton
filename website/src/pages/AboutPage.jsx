@@ -35,7 +35,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 dots pointer-events-none" />
         <div className="absolute -left-[10vw] top-1/2 -translate-y-1/2 text-[35vw] font-extrabold text-white/[0.012] leading-none select-none pointer-events-none font-display">A</div>
 
-        <div className="ctn py-32 md:py-40 relative z-10">
+        <div className="ctn py-20 md:py-40 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Text */}
             <div className="lg:col-span-6">
@@ -44,7 +44,7 @@ export default function AboutPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                   <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · South Africa</span>
                 </span>
-                <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">
+                <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">
                   Limitless<br />by <span className="text-gradient">Design</span>
                 </h1>
                 <p className="text-white/35 text-base md:text-lg mt-8 max-w-md leading-relaxed">
@@ -190,7 +190,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ VALUES — Bento Layout: 2 large featured + 4 compact + decorative image ═══ */}
-      <section className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] right-[5%]" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -271,7 +271,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ TIMELINE — Horizontal scrolling cards with connected line ═══ */}
-      <section className="relative py-32 mesh-section overflow-hidden noise">
+      <section className="relative py-16 md:py-32 mesh-section overflow-hidden noise">
         <div className="ctn relative z-10">
           <Heading tag="Our Journey" title="25 Years of" accent=" Limitless Growth" />
 
@@ -311,7 +311,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ TEAM — Featured CEO + Creative Grid ═══ */}
-      <section id="team" className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+      <section id="team" className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="bottom-[5%] right-[5%]" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -384,7 +384,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CTA — Full-bleed image with glass card ═══ */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-[#0A0A0A]/85" />
@@ -394,7 +394,7 @@ export default function AboutPage() {
         <div className="ctn relative z-10">
           <div className="max-w-3xl mx-auto">
             <Reveal dir="scale">
-              <div className="glass-card rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden">
+              <div className="glass-card rounded-[2rem] md:rounded-[2.5rem] p-7 md:p-16 text-center relative overflow-hidden">
                 <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
                 <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
                 <div className="relative z-10">
@@ -402,7 +402,7 @@ export default function AboutPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                     <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase ">Partner With Us</span>
                   </span>
-                  <h2 className="text-4xl md:text-5xl font-extrabold text-white font-display tracking-tight leading-[1.05]">Ready to Go<br /><span className="text-gradient">Limitless?</span></h2>
+                  <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight leading-[1.05]">Ready to Go<br /><span className="text-gradient">Limitless?</span></h2>
                   <p className="text-white/30 text-sm mt-5 max-w-md mx-auto">Let's discuss how Rajaton can transform your distribution strategy across any market.</p>
                   <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                     <Link to="/contact"><Btn><span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span></Btn></Link>

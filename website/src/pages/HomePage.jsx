@@ -74,6 +74,7 @@ function HeroMosaic() {
           <motion.div
             key={itemIdx}
             className="absolute group"
+            initial={false}
             animate={{ top: slot.top, right: slot.right, width: slot.w, height: slot.h }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
           >
@@ -150,7 +151,7 @@ export default function HomePage() {
       <div className="relative z-10 lg:contents" style={{ overflowX: 'clip' }}>
 
       {/* ═══ HERO — Cinematic full-screen, the crown jewel ═══ */}
-      <section ref={heroRef} className="relative z-10 lg:z-auto min-h-screen flex items-center lg:overflow-hidden mesh-hero noise">
+      <section ref={heroRef} className="relative z-10 lg:z-auto min-h-0 lg:min-h-screen flex items-center lg:overflow-hidden mesh-hero noise">
         <Orbs variant="red" />
 
         {/* Dot grid */}
@@ -162,8 +163,8 @@ export default function HomePage() {
         {/* Subtle top gradient for depth */}
         <div className="absolute top-0 left-0 right-0 h-[30vh] bg-gradient-to-b from-[#0A0A0A] to-transparent z-[1] pointer-events-none" />
 
-        <motion.div style={{ y: heroY, opacity: heroOp }} className="relative z-10 ctn py-24 md:py-22">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-4 items-center min-h-[80vh] pt-10">
+        <motion.div style={{ y: heroY, opacity: heroOp }} className="relative z-10 ctn py-10 md:py-22">
+          <div className="grid lg:grid-cols-12 gap-4 lg:gap-4 items-center min-h-0 lg:min-h-[80vh] pt-4 lg:pt-10">
 
             {/* ── LEFT: Content — larger, bolder ── */}
             <div className="lg:col-span-5 xl:col-span-5 relative z-10">
@@ -172,7 +173,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="inline-flex items-center gap-2 glass rounded-full px-5 py-2.5 mb-8 mt-12"
+                className="inline-flex items-center gap-2 glass rounded-full px-5 py-2.5 mb-4 lg:mb-8 mt-14 lg:mt-12"
               >
                 <span className="w-2 h-2 rounded-full bg-[#DC2626] animate-pulse" />
                 <span className="text-white/50 text-xs font-medium  tracking-wide">Trusted by 200+ global brands</span>
@@ -183,7 +184,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="text-[clamp(3.2rem,6.5vw,6rem)] font-extrabold text-white leading-[0.92] tracking-tight font-display"
+                className="text-[clamp(2.2rem,6.5vw,6rem)] font-extrabold text-white leading-[0.92] tracking-tight font-display"
               >
                 Powering<br />
                 <span className="text-gradient">Global Brand</span><br />
@@ -194,7 +195,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 0.8 }}
-                className="text-white/35 text-base md:text-lg mt-7 max-w-[420px] leading-relaxed"
+                className="text-white/35 text-sm md:text-lg mt-4 lg:mt-7 max-w-[420px] leading-relaxed"
               >
                 From shelf to scale — flawless execution across key account management, merchandising, logistics, and private label in 47+ countries.
               </motion.p>
@@ -204,7 +205,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.7 }}
-                className="flex flex-wrap items-center gap-3 mt-9"
+                className="flex flex-wrap items-center gap-3 mt-5 lg:mt-9"
               >
                 <Link to="/contact"><Btn><span className="flex items-center gap-2">Start a Partnership <ArrowRight size={15} /></span></Btn></Link>
                 <Link to="/case-studies"><Btn v="glass">Case Studies</Btn></Link>
@@ -215,7 +216,7 @@ export default function HomePage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex items-center gap-7 mt-12 pt-8 border-t border-white/5"
+                className="flex items-center gap-7 mt-6 lg:mt-12 pt-5 lg:pt-8 border-t border-white/5"
               >
                 {[
                   { v: "99.2", s: "%", l: "On-Time Delivery" },
@@ -238,7 +239,7 @@ export default function HomePage() {
             </div>
 
             {/* ── MOBILE: Infinite scrolling pill marquee ── */}
-            <div className="lg:hidden relative -mx-5 py-10 mobile-mosaic-zone">
+            <div className="lg:hidden relative -mx-5 py-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -251,7 +252,7 @@ export default function HomePage() {
                     <div key={i} className={`relative flex-shrink-0 mx-2 ${i % 2 === 0 ? "mt-4" : "-mt-2"}`}>
                       <div className="absolute -inset-6 rounded-[3rem] blur-xl" style={{ background: item.accent, opacity: 0.4 }} />
                       <div className="absolute -inset-14 rounded-full blur-3xl" style={{ background: item.accent, opacity: 0.2 }} />
-                      <div className="relative w-[75px] h-[150px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                      <div className="relative w-[65px] h-[110px] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
                         <img src={item.src} alt={item.alt} className="w-full h-full object-cover" loading="eager" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
                         <div className="absolute inset-0 opacity-20 mix-blend-overlay" style={{ background: item.accent }} />
@@ -280,17 +281,18 @@ export default function HomePage() {
       </div>{/* close glow wrapper */}
 
       {/* ═══ MOBILE MOSAIC GLOW BRIDGE — ambient color blobs that straddle the hero/marquee boundary ═══
-           These live OUTSIDE both the hero and marquee so they are not clipped by either section's overflow.
-           Negative margins pull them upward into the hero and the marquee covers the lower portion naturally.
-           z-20 ensures they paint above the marquee's opaque background. */}
+           Lives OUTSIDE both hero and marquee so it is not clipped by either section's overflow.
+           Zero-height in flow; the absolute child extends upward into the hero's mosaic zone
+           and downward through the marquee. z-20 places it above section backgrounds.
+           The marquee has z-30 with a transparent mobile bg so its text floats above the glow. */}
       <div className="lg:hidden relative z-20 pointer-events-none" style={{ height: 0 }}>
-        <div className="absolute left-0 right-0" style={{ height: '320px', top: '-160px', overflow: 'visible' }}>
-          <div className="absolute left-[2%] top-[5%] w-[55%] h-[90%] rounded-full blur-[100px]" style={{ background: '#DC2626', opacity: 0.25 }} />
-          <div className="absolute left-[20%] top-[15%] w-[45%] h-[70%] rounded-full blur-[100px]" style={{ background: '#F97316', opacity: 0.18 }} />
-          <div className="absolute right-[0%] top-[8%] w-[50%] h-[85%] rounded-full blur-[100px]" style={{ background: '#8B5CF6', opacity: 0.18 }} />
-          <div className="absolute right-[15%] top-[20%] w-[40%] h-[65%] rounded-full blur-[100px]" style={{ background: '#06B6D4', opacity: 0.14 }} />
-          <div className="absolute left-[35%] top-[0%] w-[35%] h-[60%] rounded-full blur-[80px]" style={{ background: '#10B981', opacity: 0.12 }} />
-          <div className="absolute left-[50%] top-[10%] w-[30%] h-[80%] rounded-full blur-[90px]" style={{ background: '#EC4899', opacity: 0.12 }} />
+        <div className="absolute left-0 right-0" style={{ height: '280px', top: '-180px' }}>
+          <div className="absolute left-[0%] top-[0%] w-[60%] h-[100%] rounded-full blur-[100px]" style={{ background: '#DC2626', opacity: 0.22 }} />
+          <div className="absolute left-[15%] top-[10%] w-[50%] h-[80%] rounded-full blur-[100px]" style={{ background: '#F97316', opacity: 0.16 }} />
+          <div className="absolute right-[-5%] top-[5%] w-[55%] h-[95%] rounded-full blur-[100px]" style={{ background: '#8B5CF6', opacity: 0.16 }} />
+          <div className="absolute right-[10%] top-[15%] w-[45%] h-[70%] rounded-full blur-[100px]" style={{ background: '#06B6D4', opacity: 0.13 }} />
+          <div className="absolute left-[30%] top-[0%] w-[40%] h-[70%] rounded-full blur-[80px]" style={{ background: '#10B981', opacity: 0.10 }} />
+          <div className="absolute left-[45%] top-[5%] w-[35%] h-[90%] rounded-full blur-[90px]" style={{ background: '#EC4899', opacity: 0.10 }} />
         </div>
       </div>
 
@@ -310,16 +312,23 @@ export default function HomePage() {
       </div>
 
       {/* ═══ STATS — Bento Grid: 1 hero stat + 3 supporting ═══ */}
-      <section className="relative py-24 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative z-30 py-12 md:py-24 bg-[#0A0A0A] overflow-hidden">
         <div className="ctn relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
             {/* Hero stat — large left block */}
             <Reveal className="md:col-span-5">
-              <div className="relative mesh-red rounded-[2rem] p-10 md:p-12 h-full min-h-[260px] flex flex-col justify-between overflow-hidden noise">
+              <div className="relative rounded-[2rem] p-8 md:p-12 h-full min-h-[220px] md:min-h-[260px] flex flex-col justify-between overflow-hidden noise border border-white/[0.06] md:border-0">
+                {/* Background image -- visible on mobile, hidden on md+ where mesh-red takes over */}
+                <img src="/11.jpg" alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="lazy" />
+                {/* Left-heavy gradient overlay for mobile */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/70 to-[#0A0A0A]/30 md:hidden" />
+                <div className="absolute inset-0 bg-[#DC2626]/20 mix-blend-overlay md:hidden" />
+                {/* Desktop mesh-red background */}
+                <div className="absolute inset-0 hidden md:block mesh-red" />
                 <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/5 blur-3xl" />
                 <span className="text-white/50 text-xs  font-semibold tracking-[0.2em] uppercase relative z-10">Global Presence</span>
                 <div className="relative z-10">
-                  <p className="text-7xl md:text-8xl font-extrabold text-white font-display tracking-tight leading-none">
+                  <p className="text-5xl md:text-8xl font-extrabold text-white font-display tracking-tight leading-none">
                     <Counter value="47" suffix="+" />
                   </p>
                   <p className="text-white/50 text-sm  mt-2">Countries across 6 continents with local operational teams</p>
@@ -330,22 +339,30 @@ export default function HomePage() {
             {/* 3 stacked stats — right column */}
             <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { val: "200", suf: "+", label: "Brand Partners", sub: "Fortune 500 to emerging", icon: Award },
-                { val: "15", suf: "K+", label: "Retail Locations", sub: "Stores served daily", icon: Globe },
-                { val: "99.2", suf: "%", label: "On-Time Delivery", sub: "Industry-leading SLA", icon: TrendingUp },
+                { val: "200", suf: "+", label: "Brand Partners", sub: "Fortune 500 to emerging", icon: Award, img: "/26.jpg" },
+                { val: "15", suf: "K+", label: "Retail Locations", sub: "Stores served daily", icon: Globe, img: "/19.jpg" },
+                { val: "99.2", suf: "%", label: "On-Time Delivery", sub: "Industry-leading SLA", icon: TrendingUp, img: "/14.jpg" },
               ].map((s, i) => (
                 <Reveal key={i} delay={i * 0.1}>
-                  <motion.div className="glass-card rounded-[1.5rem] p-6 h-full flex flex-col justify-between min-h-[125px] group" whileHover={{ y: -4 }}>
-                    <div className="w-10 h-10 rounded-xl bg-[#DC2626]/10 flex items-center justify-center mb-4 group-hover:bg-[#DC2626]/20 transition-colors">
+                  <motion.div className="relative rounded-[1.5rem] p-6 h-full flex flex-col justify-between min-h-[125px] group overflow-hidden border border-white/[0.06]" whileHover={{ y: -4 }}>
+                    {/* Background image -- visible on mobile */}
+                    <img src={s.img} alt="" className="absolute inset-0 w-full h-full object-cover md:hidden" loading="lazy" />
+                    {/* Left-heavy gradient overlay for mobile -- opaque left, transparent right */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/95 via-[#0A0A0A]/70 to-[#0A0A0A]/25 md:hidden" />
+                    {/* Desktop glass-card background */}
+                    <div className="absolute inset-0 hidden md:block glass-card rounded-[1.5rem]" />
+                    <div className="relative z-10 w-10 h-10 rounded-xl bg-[#DC2626]/10 flex items-center justify-center mb-4 group-hover:bg-[#DC2626]/20 transition-colors">
                       <s.icon size={16} className="text-[#DC2626]" />
                     </div>
-                    <div>
+                    <div className="relative z-10">
                       <p className="text-3xl md:text-4xl font-extrabold text-white font-display tracking-tight leading-none">
                         <Counter value={s.val} suffix={s.suf} />
                       </p>
                       <p className="text-white/60 text-xs  font-semibold mt-1.5">{s.label}</p>
                       <p className="text-white/20 text-[10px] mt-0.5">{s.sub}</p>
                     </div>
+                    {/* Mobile bottom border line */}
+                    <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5 md:hidden" />
                   </motion.div>
                 </Reveal>
               ))}
@@ -358,7 +375,7 @@ export default function HomePage() {
            Featured service: full-width cinematic strip
            Remaining 3: horizontal numbered list with image peeks
       */}
-      <section className="relative py-32 mesh-section overflow-hidden noise">
+      <section className="relative py-16 md:py-32 mesh-section overflow-hidden noise">
         <Orbs variant="red" />
         <div className="absolute inset-0 dots pointer-events-none" />
         <div className="ctn relative z-10">
@@ -445,7 +462,7 @@ export default function HomePage() {
            3 photos in a creative stacked/overlapping arrangement
            with a glass panel overlaying the text
       */}
-      <section className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] right-[5%]" size={500} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -453,7 +470,7 @@ export default function HomePage() {
 
             {/* ── Left: Overlapping image collage ── */}
             <Reveal className="lg:col-span-6" dir="left">
-              <div className="relative h-[500px] md:h-[580px]">
+              <div className="relative h-[380px] md:h-[580px]">
                 {/* Back image — large, slightly rotated */}
                 <motion.div
                   className="absolute top-0 left-0 w-[65%] h-[70%] rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl"
@@ -508,7 +525,7 @@ export default function HomePage() {
                 <span className="inline-flex items-center gap-2 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase  mb-5">
                   <span className="w-8 h-px bg-[#DC2626]" />About Rajaton
                 </span>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-white font-display tracking-tight leading-[1.05]">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight leading-[1.05]">
                   Built on Precision.<br /><span className="text-gradient">Driven by Results.</span>
                 </h2>
                 <p className="text-white/35 mt-6 text-sm leading-relaxed">
@@ -541,7 +558,7 @@ export default function HomePage() {
            Large featured quote on the left with portrait,
            2 stacked cards on the right
       */}
-      <section className="relative py-32 mesh-section overflow-hidden noise">
+      <section className="relative py-16 md:py-32 mesh-section overflow-hidden noise">
         <div className="ctn relative z-10">
           <Heading tag="Testimonials" title="What Our Partners" accent=" Say" />
 
@@ -616,7 +633,7 @@ export default function HomePage() {
       {/* ═══ CASE STUDIES — Bento Masonry Grid ═══
            1 large card spanning 2 rows, 2 medium cards, 1 wide bottom card
       */}
-      <section className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="bottom-[10%] left-0" size={500} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -713,7 +730,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ CTA — Full-bleed image background with glass overlay ═══ */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 md:py-32 overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -725,7 +742,7 @@ export default function HomePage() {
         <div className="ctn relative z-10">
           <div className="max-w-3xl mx-auto">
             <Reveal dir="scale">
-              <div className="glass-card rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden">
+              <div className="glass-card rounded-[2rem] md:rounded-[2.5rem] p-7 md:p-16 text-center relative overflow-hidden">
                 <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
                 <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
                 <div className="relative z-10">
@@ -733,7 +750,7 @@ export default function HomePage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                     <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase ">Let's Talk</span>
                   </span>
-                  <h2 className="text-4xl md:text-6xl font-extrabold text-white font-display tracking-tight leading-[1.05]">Ready to Scale<br />Your Distribution?</h2>
+                  <h2 className="text-3xl md:text-6xl font-extrabold text-white font-display tracking-tight leading-[1.05]">Ready to Scale<br />Your Distribution?</h2>
                   <p className="text-white/35 text-sm md:text-base mt-5 max-w-md mx-auto leading-relaxed">Join 200+ global brands that trust Rajaton. Let's build something extraordinary together.</p>
                   <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                     <Link to="/contact"><Btn><span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span></Btn></Link>

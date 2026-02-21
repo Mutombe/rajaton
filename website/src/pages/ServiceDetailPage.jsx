@@ -30,7 +30,7 @@ export default function ServiceDetailPage() {
               <div className="w-12 h-12 rounded-2xl glass-strong flex items-center justify-center glow-red-sm"><Icon size={20} className="text-[#DC2626]" /></div>
               <span className="text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase ">Solutions</span>
             </div>
-            <h1 className="text-[clamp(2.5rem,6vw,5.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">{svc.title}</h1>
+            <h1 className="text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">{svc.title}</h1>
             <p className="text-white/40 text-base md:text-lg mt-6 max-w-2xl leading-relaxed">{svc.long || svc.description}</p>
           </motion.div>
         </div>
@@ -51,7 +51,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Features */}
-      <section className="py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -78,7 +78,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Process */}
-      <section className="py-32 mesh-section relative overflow-hidden noise">
+      <section className="py-16 md:py-32 mesh-section relative overflow-hidden noise">
         <div className="ctn relative z-10">
           <Heading tag="Process" title="How We" accent=" Deliver" />
           <div className="grid md:grid-cols-4 gap-5">

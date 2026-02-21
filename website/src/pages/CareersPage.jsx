@@ -31,10 +31,10 @@ export default function CareersPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/50 via-[#0A0A0A]/80 to-[#0A0A0A]" />
         </div>
         <Orbs />
-        <div className="ctn py-40 relative z-10">
+        <div className="ctn py-20 md:py-40 relative z-10">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
             <span className="inline-flex items-center gap-2 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase font-heading mb-4"><span className="w-8 h-px bg-[#DC2626]" />Careers</span>
-            <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
+            <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
               Build the Future<br />of <span className="text-gradient">Distribution</span>
             </h1>
             <p className="text-white/35 text-base md:text-lg mt-8 max-w-lg">Join a global team reshaping how brands reach the world.</p>
@@ -43,10 +43,10 @@ export default function CareersPage() {
       </section>
 
       {/* Perks */}
-      <section className="py-24 mesh-red relative overflow-hidden noise">
+      <section className="py-12 md:py-24 mesh-red relative overflow-hidden noise">
         <div className="ctn relative z-10">
           <Reveal className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white  tracking-tight">Why Rajaton?</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white  tracking-tight">Why Rajaton?</h2>
           </Reveal>
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" delay={0.06}>
             {perks.map((p, i) => (
@@ -63,12 +63,12 @@ export default function CareersPage() {
       </section>
 
       {/* Jobs */}
-      <section className="py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[5%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
           <Reveal className="mb-10">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white  tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white  tracking-tight">
               Open <span className="text-gradient">Positions</span>
             </h2>
             <div className="flex flex-wrap items-center gap-2 mt-8">

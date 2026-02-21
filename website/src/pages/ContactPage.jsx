@@ -35,10 +35,10 @@ export default function ContactPage() {
         <Orbs variant="red" />
         <MorphBlob className="top-[20%] right-[10%]" size={500} color="rgba(220,38,38,0.06)" />
         <div className="absolute inset-0 dots pointer-events-none" />
-        <div className="ctn py-40 relative z-10">
+        <div className="ctn py-20 md:py-40 relative z-10">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
             <span className="inline-flex items-center gap-2 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase font-heading mb-4"><span className="w-8 h-px bg-[#DC2626]" />Contact</span>
-            <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
+            <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
               Let's Build<br /><span className="text-gradient">Together</span>
             </h1>
             <p className="text-white/35 text-base md:text-lg mt-8 max-w-lg">Whether you're a brand looking to scale or a retailer seeking solutions — we'd love to hear from you.</p>
@@ -46,7 +46,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-32 mesh-section relative overflow-hidden noise">
+      <section className="py-16 md:py-32 mesh-section relative overflow-hidden noise">
         <div className="ctn relative z-10">
           <div className="grid lg:grid-cols-5 gap-10 lg:gap-14">
             {/* Form */}

@@ -21,7 +21,7 @@ export default function CaseStudiesPage() {
         <div className="absolute inset-0 dots pointer-events-none" />
         <div className="absolute -right-[5vw] top-1/2 -translate-y-1/2 text-[30vw] font-extrabold text-white/[0.012] leading-none select-none pointer-events-none ">CS</div>
 
-        <div className="ctn py-32 md:py-40 relative z-10">
+        <div className="ctn py-20 md:py-40 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             {/* Left: Content */}
             <div className="lg:col-span-5">
@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                   <span className="text-white/40 text-xs font-medium font-heading tracking-wide">4 impact stories</span>
                 </span>
-                <h1 className="text-[clamp(3rem,7vw,6rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
+                <h1 className="text-[clamp(2.2rem,7vw,6rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
                   Proven<br /><span className="text-gradient">Results</span>
                 </h1>
                 <p className="text-white/35 text-base mt-7 max-w-sm leading-relaxed">
@@ -101,7 +101,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* ═══ REMAINING CASES — Each with unique layout ═══ */}
-      <section className="relative py-32 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[20%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -225,7 +225,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-[#0A0A0A]/85" />
@@ -234,7 +234,7 @@ export default function CaseStudiesPage() {
         <div className="absolute inset-0 noise pointer-events-none" />
         <div className="ctn relative z-10 max-w-3xl mx-auto">
           <Reveal dir="scale">
-            <div className="glass-card rounded-[2.5rem] p-10 md:p-16 text-center relative overflow-hidden">
+            <div className="glass-card rounded-[2rem] md:rounded-[2.5rem] p-7 md:p-16 text-center relative overflow-hidden">
               <div className="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
               <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-[#DC2626]/10 blur-3xl" />
               <div className="relative z-10">
@@ -242,7 +242,7 @@ export default function CaseStudiesPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                   <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase font-heading">Your Turn</span>
                 </span>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-white  tracking-tight leading-[1.05]">Ready for<br /><span className="text-gradient">Similar Results?</span></h2>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-white  tracking-tight leading-[1.05]">Ready for<br /><span className="text-gradient">Similar Results?</span></h2>
                 <p className="text-white/30 text-sm mt-5 max-w-md mx-auto">Every case study started with a single conversation. Let's start yours.</p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                   <Link to="/contact"><Btn><span className="flex items-center gap-2">Start a Conversation <ArrowRight size={15} /></span></Btn></Link>
@@ -294,7 +294,7 @@ export function CaseStudyDetailPage() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626]" />
               <span className="text-white/40 text-xs font-heading font-medium">{cs.cat}</span>
             </span>
-            <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">{cs.title}</h1>
+            <h1 className="text-[clamp(2rem,6vw,5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">{cs.title}</h1>
             <p className="text-white/30 text-sm mt-4 font-heading">Client: <span className="text-white/50">{cs.client}</span></p>
           </motion.div>
         </div>
@@ -326,7 +326,7 @@ export function CaseStudyDetailPage() {
       </div>
 
       {/* ═══ CONTENT — Challenge & Solution side by side + Outcomes ═══ */}
-      <section className="relative py-24 md:py-32 mesh-section overflow-hidden noise">
+      <section className="relative py-12 md:py-32 mesh-section overflow-hidden noise">
         <MorphBlob className="top-[10%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
