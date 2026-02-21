@@ -167,7 +167,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-12 gap-4 lg:gap-4 items-center min-h-0 lg:min-h-[80vh] pt-4 lg:pt-10">
 
             {/* ── LEFT: Content — larger, bolder ── */}
-            <div className="lg:col-span-5 xl:col-span-5 relative z-10">
+            <div className="lg:col-span-5 xl:col-span-5 relative z-10 pr-4 lg:pr-0">
               {/* Animated badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
