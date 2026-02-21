@@ -477,7 +477,7 @@ export default function HomePage() {
                   whileHover={{ rotate: 0 }}
                   initial={{ rotate: -3 }}
                 >
-                  <img src="/11.jpg" alt="Container port" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/11.jpg" alt="Container port" className="w-full h-full object-cover" loading="eager" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 to-transparent" />
                 </motion.div>
 
@@ -487,7 +487,7 @@ export default function HomePage() {
                   whileHover={{ rotate: 0 }}
                   initial={{ rotate: 2 }}
                 >
-                  <img src="/9.jpg" alt="Team meeting" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/9.jpg" alt="Team meeting" className="w-full h-full object-cover" loading="eager" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
                 </motion.div>
 
@@ -496,7 +496,7 @@ export default function HomePage() {
                   className="absolute bottom-0 left-[10%] w-[40%] h-[40%] rounded-[1.5rem] overflow-hidden border border-white/10 shadow-xl z-20"
                   whileHover={{ scale: 1.03 }}
                 >
-                  <img src="/23.jpg" alt="Logistics" className="w-full h-full object-cover" loading="lazy" />
+                  <img src="/23.jpg" alt="Logistics" className="w-full h-full object-cover" loading="eager" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
                 </motion.div>
 
