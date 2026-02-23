@@ -13,13 +13,13 @@ import { Btn, Counter, Reveal, Stagger, StaggerChild, PxImage, Heading, Orbs, Mo
    floating glass stat cards, and parallax depth
    ═══════════════════════════════════════════════════ */
 const MOSAIC_ITEMS = [
-  { src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80", alt: "Strategic partnership", accent: "#DC2626", link: "/services/key-account-management" },
+  { src: "/34.jpg", alt: "Strategic partnership", accent: "#DC2626", link: "/services/key-account-management" },
   { src: "/26.jpg", alt: "Logistics warehouse", accent: "#F97316", link: "/services/distribution-logistics" },
   { src: "/14.jpg", alt: "Retail merchandising", accent: "#EAB308", link: "/services/merchandising-execution" },
-  { src: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80", alt: "Business strategy", accent: "#8B5CF6", link: "/services/key-account-management" },
+  { src: "/33.jpg", alt: "Business strategy", accent: "#8B5CF6", link: "/services/key-account-management" },
   { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80", alt: "Supply chain", accent: "#06B6D4", link: "/services/distribution-logistics" },
-  { src: "/19.jpg", alt: "Global shipping", accent: "#10B981", link: "/services/distribution-logistics" },
-  { src: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80", alt: "Consumer goods", accent: "#EC4899", link: "/services/private-label" },
+  { src: "/30.jpg", alt: "Global shipping", accent: "#10B981", link: "/services/distribution-logistics" },
+  { src: "/36.jpg", alt: "Consumer goods", accent: "#EC4899", link: "/services/private-label" },
 ];
 
 /* Slot definitions for the 3-column mosaic grid (right-aligned) */

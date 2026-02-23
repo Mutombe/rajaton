@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx vite:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(tail:*)"
     ]
   }
 }

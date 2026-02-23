@@ -1,5 +1,5 @@
 import React from 'react';
-import { HandshakeIcon, Store, Truck, TagIcon, ShoppingCart, Heart, Cpu, Package, Sparkles, Globe, Award, TrendingUp } from "lucide-react";
+import { HandshakeIcon, Store, Truck, TagIcon, ShoppingCart, Heart, Cpu, Package, Sparkles, Globe, Award, TrendingUp, Banknote, Pickaxe } from "lucide-react";
 
 export const SERVICES = [
   {
@@ -73,12 +73,9 @@ export const SERVICES = [
 ];
 
 export const INDUSTRIES = [
-  { name: "FMCG & Consumer Goods", icon: ShoppingCart, d: "Full-spectrum FMCG distribution from high-volume ambient to premium personal care.", stat: "8,000+ SKUs", img: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80" },
-  { name: "Retail & E-Commerce", icon: Store, d: "Omnichannel fulfillment, click-and-collect, and unified inventory management.", stat: "15K+ touchpoints", img: "/18.jpg" },
-  { name: "Healthcare & Pharma", icon: Heart, d: "GDP-certified operations for prescription pharmaceuticals to OTC products.", stat: "100% GDP compliant", img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" },
-  { name: "Technology & Electronics", icon: Cpu, d: "Secure warehousing, serialized tracking, and expert tech merchandising.", stat: "$2B+ handled", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" },
-  { name: "Food & Beverage", icon: Package, d: "Cold chain for chilled, frozen, and ambient with HACCP certification.", stat: "99.8% freshness", img: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&q=80" },
-  { name: "Beauty & Personal Care", icon: Sparkles, d: "Premium merchandising for cosmetics, skincare, and fragrance brands.", stat: "50+ luxury brands", img: "/27.jpg" },
+  { name: "Transport & Logistics", icon: Truck, d: "End-to-end supply chain management, fleet optimization, and last-mile delivery across Southern Africa and beyond.", stat: "500+ routes", img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" },
+  { name: "Finance & Fintechs", icon: Banknote, d: "Strategic distribution partnerships for financial products, fintech solutions, and payment infrastructure.", stat: "R2B+ processed", img: "/32.jpg" },
+  { name: "Mining", icon: Pickaxe, d: "Specialized logistics and supply chain solutions for mining operations, equipment distribution, and remote site provisioning.", stat: "50+ mine sites", img: "/36.jpg" },
 ];
 
 export const TEAM = [
@@ -139,9 +136,9 @@ export const NAV = [
     { label: "All Solutions", path: "/services", d: "View all" },
   ]},
   { label: "Industries", children: [
-    { label: "FMCG", path: "/industries", d: "Consumer goods" },
-    { label: "Healthcare", path: "/industries", d: "Pharma logistics" },
-    { label: "Technology", path: "/industries", d: "Electronics" },
+    { label: "Transport & Logistics", path: "/industries", d: "Supply chain" },
+    { label: "Finance & Fintechs", path: "/industries", d: "Financial services" },
+    { label: "Mining", path: "/industries", d: "Mining operations" },
     { label: "All Industries", path: "/industries", d: "View all" },
   ]},
   { label: "Insights", children: [
@@ -158,18 +155,18 @@ export const SEARCH_INDEX = [
   { title: "Private Label Development", d: "Product formulation, packaging design, launch strategy", path: "/services/private-label", s: "Solutions" },
   { title: "About Rajaton", d: "Story, mission, values, global presence, culture, history", path: "/about", s: "Company" },
   { title: "Careers", d: "Jobs, culture, benefits, global opportunities", path: "/careers", s: "Company" },
-  { title: "Contact", d: "Offices, phone, email, partnerships, London, Dubai, Singapore", path: "/contact", s: "Company" },
+  { title: "Contact", d: "Offices, phone, email, partnerships, Sandton, London, Dubai, Singapore", path: "/contact", s: "Company" },
   { title: "Case Studies", d: "NovaBrands, FreshCo, TechVault, Luxe Beauty, results", path: "/case-studies", s: "Insights" },
-  { title: "Industries", d: "FMCG, healthcare, pharma, technology, beauty, food", path: "/industries", s: "Industries" },
+  { title: "Industries", d: "Transport logistics, finance, fintechs, mining", path: "/industries", s: "Industries" },
 ];
 
 export const SEO = {
   "/": { t: "Rajaton | Global Brand Distribution & Logistics", d: "Premier brand distribution across 47+ countries." },
   "/about": { t: "About Rajaton | Our Story & Mission", d: "25 years of limitless distribution excellence." },
   "/services": { t: "Solutions | Rajaton", d: "KAM, Merchandising, Logistics, Private Label." },
-  "/industries": { t: "Industries | Rajaton", d: "Distribution excellence across all sectors." },
+  "/industries": { t: "Industries | Rajaton", d: "Transport logistics, finance & fintechs, and mining solutions." },
   "/careers": { t: "Careers | Rajaton", d: "Join our global team across 47+ countries." },
-  "/contact": { t: "Contact | Rajaton", d: "London, Dubai, Singapore, New York offices." },
+  "/contact": { t: "Contact | Rajaton", d: "Sandton HQ, London, Dubai, Singapore offices." },
   "/case-studies": { t: "Case Studies | Rajaton", d: "Real results for global brands." },
 };
 

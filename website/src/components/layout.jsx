@@ -396,10 +396,9 @@ export function Footer({ openPolicy }) {
     {
       t: "Industries",
       items: [
-        { l: "FMCG", p: "/industries" },
-        { l: "Healthcare", p: "/industries" },
-        { l: "Technology", p: "/industries" },
-        { l: "Beauty", p: "/industries" },
+        { l: "Transport & Logistics", p: "/industries" },
+        { l: "Finance & Fintechs", p: "/industries" },
+        { l: "Mining", p: "/industries" },
       ],
     },
   ];

@@ -21,10 +21,10 @@ export default function ContactPage() {
   };
 
   const offices = [
+    { city: "Sandton", addr: "11 Alice Lane, Bowmans Building, Level 2", phone: "+27 11 669 9000", tz: "SAST" },
     { city: "London", addr: "One Canada Square, Canary Wharf, E14 5AB", phone: "+44 20 7946 0958", tz: "GMT" },
     { city: "Dubai", addr: "DIFC Gate Village, Building 5", phone: "+971 4 401 9500", tz: "GST" },
     { city: "Singapore", addr: "Marina Bay Financial Centre, Tower 1", phone: "+65 6823 4567", tz: "SGT" },
-    { city: "New York", addr: "One World Trade Center, Floor 85", phone: "+1 212 555 0190", tz: "EST" },
   ];
 
   const inputCls = "w-full bg-white/[0.03] border border-white/8 rounded-xl px-5 py-3.5 text-white text-sm placeholder-white/15 focus:outline-none focus:border-[#DC2626]/40 focus:ring-2 focus:ring-[#DC2626]/10 transition-all font-body";

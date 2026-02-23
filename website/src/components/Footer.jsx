@@ -26,10 +26,9 @@ export default function Footer({ openPolicy }) {
     {
       title: "Industries",
       links: [
-        { label: "FMCG & Consumer Goods", path: "/industries" },
-        { label: "Healthcare & Pharma", path: "/industries" },
-        { label: "Technology", path: "/industries" },
-        { label: "Beauty & Personal Care", path: "/industries" },
+        { label: "Transport & Logistics", path: "/industries" },
+        { label: "Finance & Fintechs", path: "/industries" },
+        { label: "Mining", path: "/industries" },
       ],
     },
   ];

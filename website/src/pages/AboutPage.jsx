@@ -16,7 +16,7 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-  { year: "2001", title: "Founded", d: "Rajaton established in South Africa with a vision of limitless excellence.", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80" },
+  { year: "2001", title: "Founded", d: "Rajaton established in Sandton, South Africa with a vision of limitless excellence.", img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80" },
   { year: "2007", title: "First Expansion", d: "Expanded to 10 countries across Europe and the Middle East.", img: "/11.jpg" },
   { year: "2013", title: "Tech Transformation", d: "Launched proprietary AI supply chain management platform.", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" },
   { year: "2018", title: "Global Scale", d: "30 countries, 100+ brands, 5,000 employees worldwide.", img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80" },
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
                 <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
-                  <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · South Africa</span>
+                  <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · Sandton, South Africa</span>
                 </span>
                 <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">
                   Limitless<br />by <span className="text-gradient">Design</span>
