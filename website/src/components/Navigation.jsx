@@ -54,7 +54,7 @@ export default function Navigation() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           isScrolled
-            ? "bg-[#0A0A0A]/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl shadow-black/30"
+            ? "bg-surface/90 backdrop-blur-2xl border-b border-border shadow-2xl shadow-black/30"
             : "bg-transparent"
         }`}
       >
@@ -89,7 +89,7 @@ export default function Navigation() {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   {item.children ? (
-                    <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+                    <button className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-fg-2 hover:text-fg transition-colors rounded-lg hover:bg-fg/5">
                       {item.label}
                       <ChevronDown
                         size={14}
@@ -99,10 +99,10 @@ export default function Navigation() {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-white/5 ${
+                      className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-fg/5 ${
                         location.pathname === item.path
                           ? "text-[#DC2626]"
-                          : "text-white/80 hover:text-white"
+                          : "text-fg-2 hover:text-fg"
                       }`}
                     >
                       {item.label}
@@ -117,7 +117,7 @@ export default function Navigation() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 8, scale: 0.97 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-80 bg-[#1A1A1A]/98 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden"
+                        className="absolute top-full left-0 mt-2 w-80 bg-surface-3/98 backdrop-blur-2xl border border-border-3 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden"
                       >
                         <div className="p-2">
                           {item.children.map((child, ci) => (
@@ -125,18 +125,18 @@ export default function Navigation() {
                               key={ci}
                               to={child.path}
                               onClick={() => setOpenDropdown(null)}
-                              className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors group"
+                              className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-fg/5 transition-colors group"
                             >
                               <ArrowRight
                                 size={14}
                                 className="text-[#DC2626] mt-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
                               />
                               <div>
-                                <p className="text-white font-medium text-sm">
+                                <p className="text-fg font-medium text-sm">
                                   {child.label}
                                 </p>
                                 {child.desc && (
-                                  <p className="text-gray-500 text-xs mt-0.5">
+                                  <p className="text-fg-muted text-xs mt-0.5">
                                     {child.desc}
                                   </p>
                                 )}
@@ -155,12 +155,12 @@ export default function Navigation() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setSearchOpen(true)}
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors group"
+                className="w-10 h-10 rounded-full bg-fg/5 flex items-center justify-center hover:bg-fg/10 transition-colors group"
                 aria-label="Search"
               >
                 <Search
                   size={18}
-                  className="text-white/70 group-hover:text-white transition-colors"
+                  className="text-fg-2 group-hover:text-fg transition-colors"
                 />
               </button>
 
@@ -172,13 +172,13 @@ export default function Navigation() {
 
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+                className="lg:hidden w-10 h-10 rounded-full bg-fg/5 flex items-center justify-center hover:bg-fg/10 transition-colors"
                 aria-label="Toggle menu"
               >
                 {mobileOpen ? (
-                  <X size={20} className="text-white" />
+                  <X size={20} className="text-fg" />
                 ) : (
-                  <Menu size={20} className="text-white" />
+                  <Menu size={20} className="text-fg" />
                 )}
               </button>
             </div>
@@ -194,7 +194,7 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed inset-0 z-[90] bg-[#0A0A0A] pt-24 px-6 overflow-y-auto"
+            className="fixed inset-0 z-[90] bg-surface pt-24 px-6 overflow-y-auto"
           >
             <div className="space-y-2 pb-32">
               {NAV_ITEMS.map((item, idx) => (
@@ -205,7 +205,7 @@ export default function Navigation() {
                         onClick={() =>
                           setOpenDropdown(openDropdown === idx ? null : idx)
                         }
-                        className="w-full flex items-center justify-between py-4 text-white text-lg font-semibold border-b border-white/5"
+                        className="w-full flex items-center justify-between py-4 text-fg text-lg font-semibold border-b border-border"
                       >
                         {item.label}
                         <ChevronDown
@@ -227,7 +227,7 @@ export default function Navigation() {
                                   key={ci}
                                   to={child.path}
                                   onClick={() => setMobileOpen(false)}
-                                  className="flex items-center gap-2 py-3 text-gray-400 hover:text-white transition-colors"
+                                  className="flex items-center gap-2 py-3 text-fg-muted hover:text-fg transition-colors"
                                 >
                                   <ChevronRight
                                     size={14}
@@ -236,7 +236,7 @@ export default function Navigation() {
                                   <div>
                                     <span className="block">{child.label}</span>
                                     {child.desc && (
-                                      <span className="block text-xs text-gray-600 mt-0.5">
+                                      <span className="block text-xs text-fg-muted mt-0.5">
                                         {child.desc}
                                       </span>
                                     )}
@@ -252,7 +252,7 @@ export default function Navigation() {
                     <Link
                       to={item.path}
                       onClick={() => setMobileOpen(false)}
-                      className="block py-4 text-white text-lg font-semibold border-b border-white/5"
+                      className="block py-4 text-fg text-lg font-semibold border-b border-border"
                     >
                       {item.label}
                     </Link>
@@ -260,7 +260,7 @@ export default function Navigation() {
                 </div>
               ))}
 
-              <div className="mt-8 pt-8 border-t border-white/10">
+              <div className="mt-8 pt-8 border-t border-border-3">
                 <Link to="/contact" onClick={() => setMobileOpen(false)}>
                   <MagneticButton className="w-full justify-center">
                     Get Started

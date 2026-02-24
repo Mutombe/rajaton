@@ -60,15 +60,15 @@ export default function SearchOverlay({ isOpen, onClose }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative">
-              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={24} />
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-fg-muted" size={24} />
               <input
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search Rajaton..."
-                className="w-full bg-white/10 border border-white/20 rounded-2xl py-5 pl-16 pr-14 text-white text-lg placeholder-gray-500 focus:outline-none focus:border-[#DC2626]/50 focus:ring-2 focus:ring-[#DC2626]/20 transition-all"
+                className="w-full bg-fg/10 border border-border-4 rounded-2xl py-5 pl-16 pr-14 text-fg text-lg placeholder-fg-muted focus:outline-none focus:border-[#DC2626]/50 focus:ring-2 focus:ring-[#DC2626]/20 transition-all"
               />
-              <button onClick={onClose} className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors">
+              <button onClick={onClose} className="absolute right-5 top-1/2 -translate-y-1/2 text-fg-muted hover:text-fg transition-colors">
                 <X size={22} />
               </button>
             </div>
@@ -77,25 +77,25 @@ export default function SearchOverlay({ isOpen, onClose }) {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 bg-white/5 border border-white/10 rounded-2xl overflow-hidden divide-y divide-white/5"
+                className="mt-4 bg-fg/5 border border-border-3 rounded-2xl overflow-hidden divide-y divide-border"
               >
                 {results.map((item, i) => (
                   <motion.button
                     key={i}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { delay: i * 0.05 } }}
-                    className="w-full px-6 py-4 text-left hover:bg-white/5 transition-colors flex items-center justify-between group"
+                    className="w-full px-6 py-4 text-left hover:bg-fg/5 transition-colors flex items-center justify-between group"
                     onClick={() => handleSelect(item)}
                   >
                     <div>
-                      <p className="text-white font-medium">{item.title}</p>
-                      <p className="text-gray-500 text-sm mt-0.5 line-clamp-1">{item.desc}</p>
+                      <p className="text-fg font-medium">{item.title}</p>
+                      <p className="text-fg-muted text-sm mt-0.5 line-clamp-1">{item.desc}</p>
                     </div>
                     <div className="flex items-center gap-3 flex-shrink-0 ml-4">
                       <span className="text-xs text-[#DC2626] bg-[#DC2626]/10 px-3 py-1 rounded-full whitespace-nowrap">
                         {item.section}
                       </span>
-                      <ArrowRight size={16} className="text-gray-600 group-hover:text-[#DC2626] transition-colors" />
+                      <ArrowRight size={16} className="text-fg-muted group-hover:text-[#DC2626] transition-colors" />
                     </div>
                   </motion.button>
                 ))}
@@ -103,15 +103,15 @@ export default function SearchOverlay({ isOpen, onClose }) {
             )}
 
             {query.length > 1 && results.length === 0 && (
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-gray-500 mt-8">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center text-fg-muted mt-8">
                 No results found for "{query}"
               </motion.p>
             )}
 
             {!query && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }} className="text-center mt-8">
-                <p className="text-gray-600 text-sm">Try "logistics", "private label", "careers", or "merchandising"</p>
-                <p className="text-gray-700 text-xs mt-2">Press <kbd className="bg-white/10 px-2 py-0.5 rounded text-gray-400">ESC</kbd> to close</p>
+                <p className="text-fg-muted text-sm">Try "logistics", "private label", "careers", or "merchandising"</p>
+                <p className="text-fg-muted text-xs mt-2">Press <kbd className="bg-fg/10 px-2 py-0.5 rounded text-fg-muted">ESC</kbd> to close</p>
               </motion.div>
             )}
           </motion.div>

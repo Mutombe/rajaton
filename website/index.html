@@ -37,6 +37,13 @@
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#f94449" />
+
+    <!-- Flash prevention: apply saved/system theme before paint -->
+    <script>
+      (function(){var t=localStorage.getItem('rajaton-theme');
+      if(!t)t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';
+      document.documentElement.classList.add(t);})();
+    </script>
   </head>
   <body>
     <div id="root"></div>

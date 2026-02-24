@@ -33,7 +33,7 @@ export function FloatingShapes({ variant = "default" }) {
             background:
               variant === "red"
                 ? `radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%)`
-                : `radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)`,
+                : `radial-gradient(circle, var(--th-glass-bg) 0%, transparent 70%)`,
           }}
           animate={{
             x: [0, 50, -30, 0],
@@ -61,8 +61,8 @@ export function GridPattern({ opacity = 0.03 }) {
       className="absolute inset-0 pointer-events-none"
       style={{
         backgroundImage: `
-          linear-gradient(rgba(255,255,255,${opacity}) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,${opacity}) 1px, transparent 1px)
+          linear-gradient(var(--th-dot) 1px, transparent 1px),
+          linear-gradient(90deg, var(--th-dot) 1px, transparent 1px)
         `,
         backgroundSize: "60px 60px",
       }}

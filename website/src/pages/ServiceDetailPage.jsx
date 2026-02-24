@@ -20,7 +20,7 @@ export default function ServiceDetailPage() {
       <section className="relative min-h-[80vh] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img src={svc.hero || svc.image} alt={svc.title} className="w-full h-full object-cover" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-[#0A0A0A]/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/70 to-[var(--th-overlay)]/30" />
           <div className="absolute inset-0 bg-gradient-to-br from-[#DC2626]/8 to-transparent mix-blend-overlay" />
         </div>
         <Orbs />
@@ -30,8 +30,8 @@ export default function ServiceDetailPage() {
               <div className="w-12 h-12 rounded-2xl glass-strong flex items-center justify-center glow-red-sm"><Icon size={20} className="text-[#DC2626]" /></div>
               <span className="text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase ">Solutions</span>
             </div>
-            <h1 className="text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">{svc.title}</h1>
-            <p className="text-white/40 text-base md:text-lg mt-6 max-w-2xl leading-relaxed">{svc.long || svc.description}</p>
+            <h1 className="text-[clamp(2rem,6vw,5.5rem)] font-extrabold text-fg leading-[0.95] tracking-tight font-display">{svc.title}</h1>
+            <p className="text-fg-4 text-base md:text-lg mt-6 max-w-2xl leading-relaxed">{svc.long || svc.description}</p>
           </motion.div>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function ServiceDetailPage() {
             {Object.entries(svc.stats).map(([k, v], i) => (
               <Reveal key={k} delay={i * 0.1}>
                 <p className="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight">{v}</p>
-                <p className="text-white/50 text-xs  font-semibold mt-1 tracking-[0.15em] uppercase">{svc.sLabels?.[k] || k}</p>
+                <p className="text-fg-3 text-xs  font-semibold mt-1 tracking-[0.15em] uppercase">{svc.sLabels?.[k] || k}</p>
               </Reveal>
             ))}
           </div>
@@ -51,7 +51,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Features */}
-      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-surface relative overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -65,8 +65,8 @@ export default function ServiceDetailPage() {
                       <CheckCircle2 size={15} className="text-[#DC2626]" />
                     </div>
                     <div>
-                      <h3 className="text-white font-semibold text-sm ">{f.name}</h3>
-                      <p className="text-white/25 text-xs mt-1.5 leading-relaxed">{f.d}</p>
+                      <h3 className="text-fg font-semibold text-sm ">{f.name}</h3>
+                      <p className="text-fg-3 text-xs mt-1.5 leading-relaxed">{f.d}</p>
                     </div>
                   </div>
                 </div>
@@ -86,8 +86,8 @@ export default function ServiceDetailPage() {
               <Reveal key={i} delay={i * 0.1}>
                 <div className="glass-card rounded-2xl p-6 h-full relative overflow-hidden group">
                   <div className="text-5xl font-extrabold text-[#DC2626]/[0.08] font-display mb-3">0{i + 1}</div>
-                  <h3 className="text-white font-bold  text-sm">{step}</h3>
-                  <p className="text-white/25 text-xs mt-2 leading-relaxed">
+                  <h3 className="text-fg font-bold  text-sm">{step}</h3>
+                  <p className="text-fg-3 text-xs mt-2 leading-relaxed">
                     {i === 0 && "Assess your current landscape and identify opportunities."}
                     {i === 1 && "Custom strategy aligned to your growth targets."}
                     {i === 2 && "Precision execution across all channels."}
@@ -102,16 +102,16 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* Other Services */}
-      <section className="py-20 bg-[#0A0A0A] border-t border-white/5">
+      <section className="py-20 bg-surface border-t border-border">
         <div className="ctn">
-          <Reveal className="mb-10"><h2 className="text-2xl font-bold text-white ">Other Solutions</h2></Reveal>
+          <Reveal className="mb-10"><h2 className="text-2xl font-bold text-fg">Other Solutions</h2></Reveal>
           <div className="grid sm:grid-cols-3 gap-4">
             {others.map(s => (
               <Link to={`/services/${s.id}`} key={s.id}>
                 <motion.div className="glass-card rounded-2xl p-5 h-full group" whileHover={{ y: -3 }}>
                   <s.icon size={20} className="text-[#DC2626] mb-3" />
-                  <h3 className="text-white font-bold  text-sm group-hover:text-[#DC2626] transition-colors">{s.title}</h3>
-                  <p className="text-white/20 text-xs mt-1.5">{s.short}</p>
+                  <h3 className="text-fg font-bold  text-sm group-hover:text-[#DC2626] transition-colors">{s.title}</h3>
+                  <p className="text-fg-3 text-xs mt-1.5">{s.short}</p>
                 </motion.div>
               </Link>
             ))}

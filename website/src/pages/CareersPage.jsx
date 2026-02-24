@@ -28,16 +28,16 @@ export default function CareersPage() {
       <section className="relative min-h-[75vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 mesh-hero">
           <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80" alt="" className="w-full h-full object-cover opacity-10" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/50 via-[#0A0A0A]/80 to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--th-overlay)]/50 via-[var(--th-overlay)]/80 to-[var(--th-overlay)]" />
         </div>
         <Orbs />
         <div className="ctn py-20 md:py-40 relative z-10">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
             <span className="inline-flex items-center gap-2 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase font-heading mb-4"><span className="w-8 h-px bg-[#DC2626]" />Careers</span>
-            <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
+            <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-fg leading-[0.95] tracking-tight ">
               Build the Future<br />of <span className="text-gradient">Distribution</span>
             </h1>
-            <p className="text-white/35 text-base md:text-lg mt-8 max-w-lg">Join a global team reshaping how brands reach the world.</p>
+            <p className="text-fg-4 text-base md:text-lg mt-8 max-w-lg">Join a global team reshaping how brands reach the world.</p>
           </motion.div>
         </div>
       </section>
@@ -51,10 +51,10 @@ export default function CareersPage() {
           <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" delay={0.06}>
             {perks.map((p, i) => (
               <StaggerChild key={i}>
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 h-full">
+                <div className="bg-fg/10 backdrop-blur-md rounded-2xl p-5 border border-border-3 h-full">
                   <p.icon size={20} className="text-white mb-3" />
                   <h3 className="text-white font-bold text-sm font-heading">{p.t}</h3>
-                  <p className="text-white/50 text-xs mt-1">{p.d}</p>
+                  <p className="text-fg-3 text-xs mt-1">{p.d}</p>
                 </div>
               </StaggerChild>
             ))}
@@ -63,19 +63,19 @@ export default function CareersPage() {
       </section>
 
       {/* Jobs */}
-      <section className="py-16 md:py-32 bg-[#0A0A0A] relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-surface relative overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[5%] right-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
           <Reveal className="mb-10">
-            <h2 className="text-3xl md:text-5xl font-extrabold text-white  tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-fg  tracking-tight">
               Open <span className="text-gradient">Positions</span>
             </h2>
             <div className="flex flex-wrap items-center gap-2 mt-8">
               {depts.map(d => (
                 <button key={d} onClick={() => setFilter(d)}
                   className={`px-4 py-2 rounded-full text-xs font-semibold font-heading transition-all duration-300 ${
-                    filter === d ? "bg-[#DC2626] text-white shadow-lg shadow-red-500/20" : "glass text-white/40 hover:text-white/70"
+                    filter === d ? "bg-[#DC2626] text-white shadow-lg shadow-red-500/20" : "glass text-fg-4 hover:text-fg-2"
                   }`}>{d}</button>
               ))}
             </div>
@@ -89,16 +89,16 @@ export default function CareersPage() {
                   whileHover={{ x: 4 }}
                   onClick={() => toast.success(`Application for ${job.title} — coming soon!`)}>
                   <div>
-                    <h3 className="text-white font-bold text-sm font-heading group-hover:text-[#DC2626] transition-colors">{job.title}</h3>
+                    <h3 className="text-fg font-bold text-sm font-heading group-hover:text-[#DC2626] transition-colors">{job.title}</h3>
                     <div className="flex flex-wrap items-center gap-3 mt-2">
-                      <span className="flex items-center gap-1 text-white/25 text-xs"><MapPin size={11} />{job.loc}</span>
-                      <span className="flex items-center gap-1 text-white/25 text-xs"><Briefcase size={11} />{job.type}</span>
-                      <span className="flex items-center gap-1 text-white/25 text-xs"><Layers size={11} />{job.level}</span>
-                      <span className="flex items-center gap-1 text-white/25 text-xs"><DollarSign size={11} />{job.pay}</span>
+                      <span className="flex items-center gap-1 text-fg-3 text-xs"><MapPin size={11} />{job.loc}</span>
+                      <span className="flex items-center gap-1 text-fg-3 text-xs"><Briefcase size={11} />{job.type}</span>
+                      <span className="flex items-center gap-1 text-fg-3 text-xs"><Layers size={11} />{job.level}</span>
+                      <span className="flex items-center gap-1 text-fg-3 text-xs"><DollarSign size={11} />{job.pay}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2.5 flex-shrink-0">
-                    <span className="text-[10px] glass text-white/25 px-3 py-1.5 rounded-full font-heading font-semibold">{job.dept}</span>
+                    <span className="text-[10px] glass text-fg-3 px-3 py-1.5 rounded-full font-heading font-semibold">{job.dept}</span>
                     <div className="w-8 h-8 rounded-full bg-[#DC2626]/10 flex items-center justify-center group-hover:bg-[#DC2626] transition-all duration-300">
                       <ArrowRight size={13} className="text-[#DC2626] group-hover:text-white transition-colors" />
                     </div>
@@ -110,8 +110,8 @@ export default function CareersPage() {
 
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-white/25">No positions in this department right now.</p>
-              <p className="text-white/15 text-xs mt-1">Send your CV to careers@rajaton.com</p>
+              <p className="text-fg-5">No positions in this department right now.</p>
+              <p className="text-fg-4 text-xs mt-1">Send your CV to careers@rajaton.com</p>
             </div>
           )}
         </div>

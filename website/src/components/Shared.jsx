@@ -15,21 +15,21 @@ export function CookieBanner({ onAccept, onManage }) {
       exit={{ y: 100, opacity: 0 }}
       className="fixed bottom-0 left-0 right-0 z-[150] p-4 md:p-6"
     >
-      <div className="max-w-5xl mx-auto bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
+      <div className="max-w-5xl mx-auto bg-surface-3 border border-border-3 rounded-2xl p-6 md:p-8 shadow-2xl backdrop-blur-xl">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
           <div className="flex items-start gap-4 flex-1">
             <div className="w-10 h-10 rounded-xl bg-[#DC2626]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
               <Cookie size={20} className="text-[#DC2626]" />
             </div>
             <div>
-              <h3 className="text-white font-semibold text-lg">We value your privacy</h3>
-              <p className="text-gray-400 text-sm mt-1 leading-relaxed">
+              <h3 className="text-fg font-semibold text-lg">We value your privacy</h3>
+              <p className="text-fg-muted text-sm mt-1 leading-relaxed">
                 We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">
-            <button onClick={onManage} className="px-5 py-2.5 rounded-full border border-white/20 text-white text-sm font-medium hover:bg-white/5 transition-colors">
+            <button onClick={onManage} className="px-5 py-2.5 rounded-full border border-border-4 text-fg text-sm font-medium hover:bg-fg/5 transition-colors">
               Manage
             </button>
             <button onClick={onAccept} className="px-6 py-2.5 rounded-full bg-[#DC2626] text-white text-sm font-semibold hover:bg-[#B91C1C] transition-colors">
@@ -87,30 +87,30 @@ export function PolicyModal({ type, onClose }) {
         initial={{ scale: 0.9, y: 30 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 30 }}
-        className="bg-[#1A1A1A] border border-white/10 rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl"
+        className="bg-surface-3 border border-border-3 rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-[#1A1A1A]/95 backdrop-blur-md border-b border-white/5 px-8 py-6 flex items-center justify-between rounded-t-3xl z-10">
+        <div className="sticky top-0 bg-surface-3/95 backdrop-blur-md border-b border-border px-8 py-6 flex items-center justify-between rounded-t-3xl z-10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#DC2626]/10 flex items-center justify-center">
               <Icon size={20} className="text-[#DC2626]" />
             </div>
-            <h2 className="text-white text-xl font-bold">{content.title}</h2>
+            <h2 className="text-fg text-xl font-bold">{content.title}</h2>
           </div>
-          <button onClick={onClose} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
-            <X size={18} className="text-gray-400" />
+          <button onClick={onClose} className="w-10 h-10 rounded-full bg-fg/5 flex items-center justify-center hover:bg-fg/10 transition-colors">
+            <X size={18} className="text-fg-muted" />
           </button>
         </div>
         <div className="px-8 py-6 space-y-6">
           {content.sections.map((s, i) => (
             <div key={i}>
-              <h3 className="text-white font-semibold text-lg mb-2">{s.heading}</h3>
-              <p className="text-gray-400 leading-relaxed text-sm">{s.text}</p>
+              <h3 className="text-fg font-semibold text-lg mb-2">{s.heading}</h3>
+              <p className="text-fg-muted leading-relaxed text-sm">{s.text}</p>
             </div>
           ))}
-          <div className="pt-4 border-t border-white/5">
-            <p className="text-gray-600 text-sm">Last updated: February 2026 · Rajaton Global Ltd.</p>
-            <p className="text-gray-600 text-sm">For questions, contact: privacy@rajaton.com</p>
+          <div className="pt-4 border-t border-border">
+            <p className="text-fg-muted text-sm">Last updated: February 2026 · Rajaton Global Ltd.</p>
+            <p className="text-fg-muted text-sm">For questions, contact: privacy@rajaton.com</p>
           </div>
         </div>
       </motion.div>

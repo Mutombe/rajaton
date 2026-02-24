@@ -14,8 +14,10 @@ import {
   Lock,
 } from "lucide-react";
 import { useScrollY, useWindowSize } from "@/hooks";
+import { useTheme } from "@/hooks/useTheme";
 import { NAV, SEARCH_INDEX } from "@/data/constants";
 import { Btn } from "@/components/ui";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 /* ═══════════════════════════════════════════════════
    NAVIGATION — Glassmorphic with mega-dropdown
@@ -74,7 +76,7 @@ export function Navigation() {
                   <img
                     src="/logo.png"
                     alt="Rajaton Logo"
-                    className="w-24 h-auto"
+                    className="w-24 h-auto "
                     loading="eager"
                   />
                 </div>
@@ -91,7 +93,7 @@ export function Navigation() {
                   onMouseLeave={() => setDd(null)}
                 >
                   {item.children ? (
-                    <button className="flex items-center gap-1 px-4 py-2 text-[13px] font-medium text-white/70 hover:text-white transition-colors rounded-xl hover:bg-white/5">
+                    <button className="flex items-center gap-1 px-4 py-2 text-[13px] font-medium text-fg-2 hover:text-fg transition-colors rounded-xl hover:bg-fg/5">
                       {item.label}
                       <ChevronDown
                         size={13}
@@ -101,7 +103,7 @@ export function Navigation() {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`px-4 py-2 text-[13px] font-medium transition-colors rounded-xl hover:bg-white/5 ${loc.pathname === item.path ? "text-[#DC2626]" : "text-white/70 hover:text-white"}`}
+                      className={`px-4 py-2 text-[13px] font-medium transition-colors rounded-xl hover:bg-fg/5 ${loc.pathname === item.path ? "text-[#DC2626]" : "text-fg-2 hover:text-fg"}`}
                     >
                       {item.label}
                     </Link>
@@ -120,18 +122,18 @@ export function Navigation() {
                             key={ci}
                             to={c.path}
                             onClick={() => setDd(null)}
-                            className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors group"
+                            className="flex items-start gap-3 px-4 py-3 rounded-xl hover:bg-fg/5 transition-colors group"
                           >
                             <ArrowRight
                               size={12}
                               className="text-[#DC2626] mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
                             />
                             <div>
-                              <p className="text-white/90 font-medium text-sm">
+                              <p className="text-fg-2 font-medium text-sm">
                                 {c.label}
                               </p>
                               {c.d && (
-                                <p className="text-white/30 text-xs mt-0.5">
+                                <p className="text-fg-4 text-xs mt-0.5">
                                   {c.d}
                                 </p>
                               )}
@@ -149,23 +151,24 @@ export function Navigation() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setSearch(true)}
-                className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="w-9 h-9 rounded-xl bg-fg/5 hover:bg-fg/10 flex items-center justify-center transition-colors"
                 aria-label="Search"
               >
-                <Search size={15} className="text-white/60" />
+                <Search size={15} className="text-fg-3" />
               </button>
+              <ThemeToggle />
               <Link to="/contact" className="hidden md:block">
                 <Btn className="!py-2.5 !px-5 !text-xs">Get Started</Btn>
               </Link>
               <button
                 onClick={() => setMob(!mob)}
-                className="lg:hidden w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors"
+                className="lg:hidden w-9 h-9 rounded-xl bg-fg/5 hover:bg-fg/10 flex items-center justify-center transition-colors"
                 aria-label="Menu"
               >
                 {mob ? (
-                  <X size={18} className="text-white" />
+                  <X size={18} className="text-fg" />
                 ) : (
-                  <Menu size={18} className="text-white" />
+                  <Menu size={18} className="text-fg" />
                 )}
               </button>
             </div>
@@ -181,7 +184,7 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed inset-0 z-[90] bg-[#0A0A0A] pt-28 px-6 pb-12 overflow-y-auto"
+            className="fixed inset-0 z-[90] bg-surface pt-28 px-6 pb-12 overflow-y-auto"
           >
             <div className="space-y-1">
               {NAV.map((item, i) => (
@@ -190,7 +193,7 @@ export function Navigation() {
                     <>
                       <button
                         onClick={() => setDd(dd === i ? null : i)}
-                        className="w-full flex items-center justify-between py-4 text-white text-base font-semibold border-b border-white/5"
+                        className="w-full flex items-center justify-between py-4 text-fg text-base font-semibold border-b border-border"
                       >
                         {item.label}
                         <ChevronDown
@@ -212,7 +215,7 @@ export function Navigation() {
                                   key={ci}
                                   to={c.path}
                                   onClick={() => setMob(false)}
-                                  className="flex items-center gap-2 py-3 text-white/50 hover:text-white transition-colors text-sm"
+                                  className="flex items-center gap-2 py-3 text-fg-3 hover:text-fg transition-colors text-sm"
                                 >
                                   <ChevronRight
                                     size={12}
@@ -230,14 +233,18 @@ export function Navigation() {
                     <Link
                       to={item.path}
                       onClick={() => setMob(false)}
-                      className="block py-4 text-white text-base font-semibold border-b border-white/5 "
+                      className="block py-4 text-fg text-base font-semibold border-b border-border "
                     >
                       {item.label}
                     </Link>
                   )}
                 </div>
               ))}
-              <div className="pt-8">
+              <div className="pt-8 flex flex-col gap-3">
+                <div className="flex items-center justify-between py-3">
+                  <span className="text-fg-3 text-sm font-medium">Theme</span>
+                  <ThemeToggle />
+                </div>
                 <Link to="/contact" onClick={() => setMob(false)}>
                   <Btn className="w-full justify-center">Get Started</Btn>
                 </Link>
@@ -299,7 +306,7 @@ function SearchOverlay({ open, close }) {
           >
             <div className="relative">
               <Search
-                className="absolute left-5 top-1/2 -translate-y-1/2 text-white/30"
+                className="absolute left-5 top-1/2 -translate-y-1/2 text-fg-4"
                 size={20}
               />
               <input
@@ -307,11 +314,11 @@ function SearchOverlay({ open, close }) {
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
                 placeholder="Search Rajaton..."
-                className="w-full glass-strong rounded-2xl py-4.5 pl-14 pr-12 text-white text-base placeholder-white/25 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30 transition-all "
+                className="w-full glass-strong rounded-2xl py-4.5 pl-14 pr-12 text-fg text-base placeholder-fg-3 focus:outline-none focus:ring-2 focus:ring-[#DC2626]/30 transition-all "
               />
               <button
                 onClick={close}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-fg-4 hover:text-fg transition-colors"
               >
                 <X size={18} />
               </button>
@@ -320,7 +327,7 @@ function SearchOverlay({ open, close }) {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-3 glass-dark rounded-2xl overflow-hidden divide-y divide-white/5"
+                className="mt-3 glass-dark rounded-2xl overflow-hidden divide-y divide-border"
               >
                 {results.map((r, i) => (
                   <button
@@ -329,13 +336,13 @@ function SearchOverlay({ open, close }) {
                       nav(r.path);
                       close();
                     }}
-                    className="w-full px-5 py-3.5 text-left hover:bg-white/5 transition-colors flex items-center justify-between group"
+                    className="w-full px-5 py-3.5 text-left hover:bg-fg/5 transition-colors flex items-center justify-between group"
                   >
                     <div>
-                      <p className="text-white/90 font-medium text-sm ">
+                      <p className="text-fg-2 font-medium text-sm ">
                         {r.title}
                       </p>
-                      <p className="text-white/25 text-xs mt-0.5 line-clamp-1">
+                      <p className="text-fg-3 text-xs mt-0.5 line-clamp-1">
                         {r.d}
                       </p>
                     </div>
@@ -347,14 +354,14 @@ function SearchOverlay({ open, close }) {
               </motion.div>
             )}
             {q.length > 1 && !results.length && (
-              <p className="text-center text-white/25 mt-8 text-sm">
+              <p className="text-center text-fg-3 mt-8 text-sm">
                 No results for "{q}"
               </p>
             )}
             {!q && (
-              <p className="text-center text-white/15 mt-8 text-xs">
+              <p className="text-center text-fg-4 mt-8 text-xs">
                 Try "logistics", "careers", or "merchandising" ·{" "}
-                <kbd className="glass px-1.5 py-0.5 rounded text-white/25 text-[10px]">
+                <kbd className="glass px-1.5 py-0.5 rounded text-fg-3 text-[10px]">
                   ESC
                 </kbd>{" "}
                 to close
@@ -403,17 +410,17 @@ export function Footer({ openPolicy }) {
     },
   ];
   return (
-    <footer className="relative mesh-dark border-t border-white/5">
+    <footer className="relative mesh-dark border-t border-border">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#DC2626]/20 to-transparent" />
       <div className="ctn pt-16 md:pt-28 pb-10">
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 pt-6 md:pt-10">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center gap-2.5 mb-6">
               <div className="w-24 rounded-lg  flex items-center justify-center">
-                <img src="/logo.png" alt="Rajaton Logo" className="w-24 h-auto" loading="eager"/>
+                <img src="/logo.png" alt="Rajaton Logo" className="w-24 h-auto " loading="eager"/>
               </div>
             </Link>
-            <p className="text-white/30 text-sm leading-relaxed max-w-sm">
+            <p className="text-fg-4 text-sm leading-relaxed max-w-sm">
               The world's premier brand distribution company. Strategic
               partnerships, flawless execution, supply chain excellence across
               47+ countries.
@@ -421,7 +428,7 @@ export function Footer({ openPolicy }) {
           </div>
           {links.map((g, i) => (
             <div key={i}>
-              <h4 className="text-white/60 font-semibold mb-5 text-xs tracking-[0.15em] uppercase ">
+              <h4 className="text-fg-3 font-semibold mb-5 text-xs tracking-[0.15em] uppercase ">
                 {g.t}
               </h4>
               <ul className="space-y-2.5">
@@ -429,7 +436,7 @@ export function Footer({ openPolicy }) {
                   <li key={li}>
                     <Link
                       to={l.p}
-                      className="text-white/30 hover:text-white transition-colors text-sm"
+                      className="text-fg-4 hover:text-fg transition-colors text-sm"
                     >
                       {l.l}
                     </Link>
@@ -439,24 +446,24 @@ export function Footer({ openPolicy }) {
             </div>
           ))}
         </div>
-        <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/20 text-xs">
+        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-fg-4 text-xs">
             &copy; {new Date().getFullYear()} Rajaton Global Ltd.
           </p>
           <div className="flex items-center gap-6">
             <button
               onClick={() => openPolicy("privacy")}
-              className="text-white/20 hover:text-white/60 text-xs transition-colors"
+              className="text-fg-4 hover:text-fg-2 text-xs transition-colors"
             >
               Privacy
             </button>
             <button
               onClick={() => openPolicy("cookie")}
-              className="text-white/20 hover:text-white/60 text-xs transition-colors"
+              className="text-fg-4 hover:text-fg-2 text-xs transition-colors"
             >
               Cookies
             </button>
-            <button className="text-white/20 hover:text-white/60 text-xs transition-colors">
+            <button className="text-fg-4 hover:text-fg-2 text-xs transition-colors">
               Terms
             </button>
           </div>
@@ -484,10 +491,10 @@ export function CookieBanner({ onAccept, onManage }) {
               <Cookie size={16} className="text-[#DC2626]" />
             </div>
             <div>
-              <h3 className="text-white font-semibold text-sm ">
+              <h3 className="text-fg font-semibold text-sm ">
                 We value your privacy
               </h3>
-              <p className="text-white/30 text-xs mt-1 leading-relaxed">
+              <p className="text-fg-4 text-xs mt-1 leading-relaxed">
                 We use cookies to enhance your experience and analyze traffic.
               </p>
             </div>
@@ -495,7 +502,7 @@ export function CookieBanner({ onAccept, onManage }) {
           <div className="flex items-center gap-2.5 flex-shrink-0">
             <button
               onClick={onManage}
-              className="px-5 py-2 rounded-full border border-white/10 text-white/70 text-xs font-semibold hover:bg-white/5 transition-colors "
+              className="px-5 py-2 rounded-full border border-border-3 text-fg-2 text-xs font-semibold hover:bg-fg/5 transition-colors "
             >
               Manage
             </button>
@@ -572,30 +579,30 @@ export function PolicyModal({ type, onClose }) {
         className="glass-dark rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 glass-dark border-b border-white/5 px-7 py-5 flex items-center justify-between rounded-t-3xl z-10">
+        <div className="sticky top-0 glass-dark border-b border-border px-7 py-5 flex items-center justify-between rounded-t-3xl z-10">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-[#DC2626]/10 flex items-center justify-center">
               <Icon size={16} className="text-[#DC2626]" />
             </div>
-            <h2 className="text-white font-bold ">{title}</h2>
+            <h2 className="text-fg font-bold ">{title}</h2>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"
+            className="w-8 h-8 rounded-full bg-fg/5 flex items-center justify-center hover:bg-fg/10 transition-colors"
           >
-            <X size={14} className="text-white/40" />
+            <X size={14} className="text-fg-4" />
           </button>
         </div>
         <div className="px-7 py-6 space-y-5">
           {sections.map((s, i) => (
             <div key={i}>
-              <h3 className="text-white font-semibold text-sm  mb-1.5">
+              <h3 className="text-fg font-semibold text-sm  mb-1.5">
                 {s.h}
               </h3>
-              <p className="text-white/30 text-sm leading-relaxed">{s.t}</p>
+              <p className="text-fg-4 text-sm leading-relaxed">{s.t}</p>
             </div>
           ))}
-          <p className="text-white/10 text-xs pt-4 border-t border-white/5">
+          <p className="text-fg-4 text-xs pt-4 border-t border-border">
             Last updated: February 2026 · Rajaton Global Ltd.
           </p>
         </div>
@@ -611,6 +618,8 @@ export function Cursor() {
   const [p, setP] = useState({ x: 0, y: 0 });
   const [h, setH] = useState(false);
   const { w } = useWindowSize();
+  const { theme } = useTheme();
+  const blend = theme === "dark" ? "mix-blend-screen" : "mix-blend-multiply";
   useEffect(() => {
     if (w < 768) return;
     const m = (e) => setP({ x: e.clientX, y: e.clientY });
@@ -629,12 +638,12 @@ export function Cursor() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 w-3 h-3 rounded-full bg-[#DC2626] pointer-events-none z-[9999] mix-blend-screen"
+        className={`fixed top-0 left-0 w-3 h-3 rounded-full bg-[#DC2626] pointer-events-none z-[9999] ${blend}`}
         animate={{ x: p.x - 6, y: p.y - 6 }}
         transition={{ type: "spring", stiffness: 800, damping: 35 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#DC2626]/40 pointer-events-none z-[9999] mix-blend-screen"
+        className={`fixed top-0 left-0 w-8 h-8 rounded-full border border-[#DC2626]/40 pointer-events-none z-[9999] ${blend}`}
         animate={{
           x: p.x - 16,
           y: p.y - 16,
@@ -660,7 +669,7 @@ export function ScrollTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full glass-strong flex items-center justify-center hover:bg-white/10 transition-colors glow-red-sm"
+          className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full glass-strong flex items-center justify-center hover:bg-fg/10 transition-colors glow-red-sm"
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Scroll top"

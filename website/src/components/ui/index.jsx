@@ -21,10 +21,10 @@ export function MagneticButton({ children, className = "", onClick, variant = "p
 
   const styles = {
     primary: "bg-[#DC2626] text-white hover:bg-[#B91C1C] shadow-lg shadow-red-500/20",
-    outline: "border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/60",
-    white: "bg-white text-[#0A0A0A] hover:bg-gray-100",
-    ghost: "text-white hover:bg-white/5",
-    glass: "bg-white/10 backdrop-blur-md text-white hover:bg-white/20 border border-white/10",
+    outline: "border-2 border-fg/30 text-fg hover:bg-fg/10 hover:border-fg/60",
+    white: "bg-fg text-surface hover:bg-fg/90",
+    ghost: "text-fg hover:bg-fg/5",
+    glass: "bg-fg/10 backdrop-blur-md text-fg hover:bg-fg/20 border border-border-3",
   };
 
   return (
@@ -171,11 +171,11 @@ export function SectionHeading({ tag, title, titleAccent, accent, description, d
       {tag && (
         <span className="text-[#DC2626] text-sm font-semibold tracking-widest uppercase">{tag}</span>
       )}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mt-4 font-heading" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-fg mt-4 font-heading" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
         {title} {resolvedAccent && <span className="text-[#DC2626]">{resolvedAccent}</span>}
       </h2>
       {resolvedDesc && (
-        <p className={`text-gray-500 mt-6 text-lg ${center ? "max-w-2xl mx-auto" : "max-w-xl"}`}>
+        <p className={`text-fg-muted mt-6 text-lg ${center ? "max-w-2xl mx-auto" : "max-w-xl"}`}>
           {resolvedDesc}
         </p>
       )}
@@ -215,11 +215,11 @@ export function MorphBlob({ className = "", size = 400, color = "rgba(220,38,38,
   );
 }
 
-export function Wave({ color = "#0A0A0A", flip = false }) {
+export function Wave({ color, flip = false }) {
   return (
     <div className={`w-full overflow-hidden leading-none ${flip ? "rotate-180" : ""}`}>
       <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" preserveAspectRatio="none">
-        <path d="M0 50 C360 0, 720 100, 1080 50 S1440 0, 1440 50 L1440 100 L0 100 Z" fill={color} />
+        <path d="M0 50 C360 0, 720 100, 1080 50 S1440 0, 1440 50 L1440 100 L0 100 Z" fill={color || "var(--th-bg)"} />
       </svg>
     </div>
   );

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npx vite:*)",
       "Bash(git mv:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "Bash(cd /c/Users/PC/documents/rajaton/website && npm run build 2>&1)"
     ]
   }
 }

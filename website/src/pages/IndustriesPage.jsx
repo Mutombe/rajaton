@@ -23,7 +23,7 @@ export default function IndustriesPage() {
       <section className="relative min-h-screen flex items-center overflow-hidden mesh-hero noise">
         <Orbs variant="red" />
         <div className="absolute inset-0 dots pointer-events-none" />
-        <div className="absolute -right-[8vw] top-1/2 -translate-y-1/2 text-[28vw] font-extrabold text-white/[0.012] leading-none select-none pointer-events-none">IN</div>
+        <div className="absolute -right-[8vw] top-1/2 -translate-y-1/2 text-[28vw] font-extrabold text-fg-6 leading-none select-none pointer-events-none">IN</div>
 
         <div className="ctn py-20 md:py-40 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -32,21 +32,21 @@ export default function IndustriesPage() {
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
                 <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
-                  <span className="text-white/40 text-xs font-medium font-heading tracking-wide">3 core sectors</span>
+                  <span className="text-fg-3 text-xs font-medium font-heading tracking-wide">3 core sectors</span>
                 </span>
-                <h1 className="text-[clamp(2.2rem,7vw,6rem)] font-extrabold text-white leading-[0.95] tracking-tight">
+                <h1 className="text-[clamp(2.2rem,7vw,6rem)] font-extrabold text-fg leading-[0.95] tracking-tight">
                   Sector<br /><span className="text-gradient">Expertise</span>
                 </h1>
-                <p className="text-white/35 text-base mt-7 max-w-sm leading-relaxed">
+                <p className="text-fg-4 text-base mt-7 max-w-sm leading-relaxed">
                   Deep domain knowledge across key industries driving Southern Africa's economy. Each sector team brings specialized experience and tailored solutions.
                 </p>
 
                 {/* Quick stats */}
-                <div className="flex items-center gap-6 mt-10 pt-8 border-t border-white/5">
+                <div className="flex items-center gap-6 mt-10 pt-8 border-t border-border">
                   {[{ n: "3", l: "Industries" }, { n: "500", s: "+", l: "Active Routes" }, { n: "50", s: "+", l: "Mine Sites" }].map((s, i) => (
                     <div key={i}>
-                      <p className="text-white font-extrabold text-lg"><Counter value={s.n} suffix={s.s || ""} /></p>
-                      <p className="text-white/20 text-[10px] font-heading">{s.l}</p>
+                      <p className="text-fg font-extrabold text-lg"><Counter value={s.n} suffix={s.s || ""} /></p>
+                      <p className="text-fg-3 text-[10px] font-heading">{s.l}</p>
                     </div>
                   ))}
                 </div>
@@ -62,7 +62,7 @@ export default function IndustriesPage() {
               {INDUSTRIES.map((ind, idx) => (
                 <motion.div key={idx} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + idx * 0.12, duration: 0.8 }} className="relative group" style={{ marginTop: idx === 1 ? "-2rem" : idx === 2 ? "3rem" : 0 }}>
                   <div className="absolute -inset-2 rounded-[3rem] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" style={{ background: ACCENTS[idx] }} />
-                  <div className={`relative w-[160px] ${idx === 1 ? "h-[220px]" : "h-[190px]"} rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl`}>
+                  <div className={`relative w-[160px] ${idx === 1 ? "h-[220px]" : "h-[190px]"} rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl`}>
                     <img src={ind.img} alt={ind.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
@@ -75,7 +75,7 @@ export default function IndustriesPage() {
               {/* Floating glass badge */}
               <motion.div className="absolute bottom-[15%] left-[5%] z-20 glass-strong rounded-2xl px-5 py-3 shadow-2xl glow-red-sm" animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity }}>
                 <p className="text-white font-extrabold text-xl leading-none">500+</p>
-                <p className="text-white/30 text-[9px] font-heading font-semibold mt-0.5">Active Routes</p>
+                <p className="text-fg-4 text-[9px] font-heading font-semibold mt-0.5">Active Routes</p>
               </motion.div>
             </div>
           </div>
@@ -87,8 +87,8 @@ export default function IndustriesPage() {
         <Reveal>
           <div className="group relative h-[400px] md:h-[500px] overflow-hidden">
             <img src={INDUSTRIES[0].img} alt={INDUSTRIES[0].name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 via-transparent to-[#0A0A0A]/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)] via-[var(--th-overlay)]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)]/50 via-transparent to-[var(--th-overlay)]/30" />
             <div className="absolute inset-0 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" style={{ background: `${ACCENTS[0]}08` }} />
             <div className="absolute inset-0 noise pointer-events-none" />
 
@@ -101,12 +101,12 @@ export default function IndustriesPage() {
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-heading" style={{ color: ACCENTS[0] }}>01 · Core Sector</span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-[0.95]">{INDUSTRIES[0].name}</h2>
-                <p className="text-white/40 text-sm mt-4 max-w-md leading-relaxed">{INDUSTRIES[0].d}</p>
+                <p className="text-fg-3 text-sm mt-4 max-w-md leading-relaxed">{INDUSTRIES[0].d}</p>
                 <div className="mt-5 space-y-2">
                   {FEATURES[0].map((f, fi) => (
                     <div key={fi} className="flex items-center gap-2.5">
                       <CheckCircle2 size={13} style={{ color: ACCENTS[0] }} className="flex-shrink-0" />
-                      <span className="text-white/35 text-xs font-heading">{f}</span>
+                      <span className="text-fg-4 text-xs font-heading">{f}</span>
                     </div>
                   ))}
                 </div>
@@ -115,19 +115,19 @@ export default function IndustriesPage() {
                     <TrendingUp size={13} style={{ color: ACCENTS[0] }} />
                     <p className="font-bold text-sm font-heading" style={{ color: ACCENTS[0] }}>{INDUSTRIES[0].stat}</p>
                   </div>
-                  <Link to="/contact" className="flex items-center gap-1.5 text-white/40 font-semibold text-xs font-heading hover:text-white hover:gap-3 transition-all">
+                  <Link to="/contact" className="flex items-center gap-1.5 text-fg-3 font-semibold text-xs font-heading hover:text-fg hover:gap-3 transition-all">
                     Discuss Your Needs <ArrowRight size={12} />
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="absolute top-[10%] right-[5%] text-[180px] md:text-[250px] font-extrabold text-white/[0.03] leading-none select-none pointer-events-none">01</div>
+            <div className="absolute top-[10%] right-[5%] text-[180px] md:text-[250px] font-extrabold text-fg-6 leading-none select-none pointer-events-none">01</div>
           </div>
         </Reveal>
       </section>
 
       {/* ═══ INDUSTRY 2 — Finance & Fintechs — Side-by-side: image + glass card ═══ */}
-      <section className="relative py-12 md:py-24 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] left-0" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -136,8 +136,8 @@ export default function IndustriesPage() {
             <Reveal className="md:col-span-7">
               <motion.div className="group relative rounded-[2rem] overflow-hidden h-[380px] md:h-[440px]" whileHover={{ y: -4 }}>
                 <img src={INDUSTRIES[1].img} alt={INDUSTRIES[1].name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)]/60 to-transparent" />
                 <div className="absolute inset-0 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: `${ACCENTS[1]}08` }} />
 
                 <div className="absolute inset-0 flex flex-col justify-end p-7 md:p-10">
@@ -149,13 +149,13 @@ export default function IndustriesPage() {
                       <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-heading" style={{ color: ACCENTS[1] }}>02</span>
                     </div>
                     <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">{INDUSTRIES[1].name}</h3>
-                    <p className="text-white/35 text-sm mt-2">{INDUSTRIES[1].d}</p>
+                    <p className="text-fg-4 text-sm mt-2">{INDUSTRIES[1].d}</p>
                     <div className="glass rounded-lg px-3 py-2 mt-4 inline-flex items-center gap-2">
                       <p className="font-bold text-sm font-heading" style={{ color: ACCENTS[1] }}>{INDUSTRIES[1].stat}</p>
                     </div>
                   </div>
                 </div>
-                <div className="absolute top-4 right-6 text-8xl font-extrabold text-white/[0.04] leading-none">02</div>
+                <div className="absolute top-4 right-6 text-8xl font-extrabold text-fg-6 leading-none">02</div>
                 <div className="absolute bottom-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" style={{ background: `linear-gradient(to right, ${ACCENTS[1]}, transparent)` }} />
               </motion.div>
             </Reveal>
@@ -168,22 +168,22 @@ export default function IndustriesPage() {
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-5">
                       <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-heading" style={{ color: ACCENTS[1] }}>Key Capabilities</span>
-                      <span className="text-white/[0.04] text-5xl font-extrabold">02</span>
+                      <span className="text-fg-6 text-5xl font-extrabold">02</span>
                     </div>
                     <div className="space-y-3">
                       {FEATURES[1].map((f, fi) => (
                         <div key={fi} className="flex items-center gap-2.5">
                           <CheckCircle2 size={13} style={{ color: ACCENTS[1] }} className="flex-shrink-0" />
-                          <span className="text-white/40 text-xs font-heading">{f}</span>
+                          <span className="text-fg-3 text-xs font-heading">{f}</span>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div className="relative z-10 flex items-center justify-between mt-5 pt-4 border-t border-white/5">
+                  <div className="relative z-10 flex items-center justify-between mt-5 pt-4 border-t border-border">
                     <div className="glass rounded-lg px-3 py-2">
                       <p className="font-bold text-xs font-heading" style={{ color: ACCENTS[1] }}>{INDUSTRIES[1].stat}</p>
                     </div>
-                    <Link to="/contact" className="flex items-center gap-1.5 text-white/30 text-xs font-heading hover:gap-3 transition-all" style={{ color: `${ACCENTS[1]}99` }}>
+                    <Link to="/contact" className="flex items-center gap-1.5 text-fg-4 text-xs font-heading hover:gap-3 transition-all" style={{ color: `${ACCENTS[1]}99` }}>
                       Discuss <ArrowRight size={11} />
                     </Link>
                   </div>
@@ -195,7 +195,7 @@ export default function IndustriesPage() {
               <Reveal delay={0.15}>
                 <div className="relative rounded-[1.5rem] overflow-hidden h-[175px] group">
                   <img src={INDUSTRIES[1].img} alt={INDUSTRIES[1].name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)]/50 to-transparent" />
                   <div className="absolute inset-0 mix-blend-overlay" style={{ background: `${ACCENTS[1]}05` }} />
                 </div>
               </Reveal>
@@ -207,7 +207,7 @@ export default function IndustriesPage() {
       {/* ═══ INDUSTRY 3 — Mining — Reversed horizontal: content left, image bleeds right ═══ */}
       <section className="relative py-0 overflow-hidden">
         <Reveal>
-          <div className="grid lg:grid-cols-12 gap-0 items-center bg-[#0A0A0A]">
+          <div className="grid lg:grid-cols-12 gap-0 items-center bg-surface">
             {/* Glass content — left */}
             <div className="lg:col-span-5 p-8 md:p-0 relative z-10">
               <div className="glass-card rounded-[2rem] p-8 md:p-10 lg:ml-[max(2rem,calc((100vw-1200px)/2+1rem))] lg:mr-0 lg:my-16 relative overflow-hidden group">
@@ -218,13 +218,13 @@ export default function IndustriesPage() {
                   </div>
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase font-heading" style={{ color: ACCENTS[2] }}>03</span>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">{INDUSTRIES[2].name}</h2>
-                <p className="text-white/30 text-sm mt-3 leading-relaxed">{INDUSTRIES[2].d}</p>
+                <h2 className="text-2xl md:text-3xl font-extrabold text-fg tracking-tight">{INDUSTRIES[2].name}</h2>
+                <p className="text-fg-4 text-sm mt-3 leading-relaxed">{INDUSTRIES[2].d}</p>
                 <div className="mt-5 space-y-2">
                   {FEATURES[2].map((f, fi) => (
                     <div key={fi} className="flex items-center gap-2.5">
                       <CheckCircle2 size={13} style={{ color: ACCENTS[2] }} className="flex-shrink-0" />
-                      <span className="text-white/35 text-xs font-heading">{f}</span>
+                      <span className="text-fg-4 text-xs font-heading">{f}</span>
                     </div>
                   ))}
                 </div>
@@ -243,26 +243,26 @@ export default function IndustriesPage() {
             {/* Image bleeding right */}
             <div className="lg:col-span-7 relative h-[320px] lg:h-[480px]">
               <img src={INDUSTRIES[2].img} alt={INDUSTRIES[2].name} className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)] via-[var(--th-overlay)]/30 to-transparent" />
               <div className="absolute inset-0 mix-blend-overlay" style={{ background: `${ACCENTS[2]}05` }} />
               <div className="absolute inset-0 noise pointer-events-none" />
-              <div className="absolute bottom-6 right-8 text-[120px] font-extrabold text-white/[0.04] leading-none select-none">03</div>
+              <div className="absolute bottom-6 right-8 text-[120px] font-extrabold text-fg-6 leading-none select-none">03</div>
             </div>
           </div>
         </Reveal>
       </section>
 
       {/* ═══ CROSS-SECTOR CAPABILITIES ═══ */}
-      <section className="relative py-12 md:py-24 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <div className="ctn relative z-10">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <Reveal className="lg:col-span-4">
               <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase font-heading">Cross-Sector</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight mt-2 leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-fg tracking-tight mt-2 leading-[1.05]">
                 Capabilities That<br /><span className="text-gradient">Scale Across</span>
               </h2>
-              <p className="text-white/30 text-sm mt-4 leading-relaxed">Every industry benefits from our core platform infrastructure.</p>
+              <p className="text-fg-4 text-sm mt-4 leading-relaxed">Every industry benefits from our core platform infrastructure.</p>
             </Reveal>
 
             <div className="lg:col-span-8 grid sm:grid-cols-3 gap-4">
@@ -277,8 +277,8 @@ export default function IndustriesPage() {
                 <Reveal key={i} delay={i * 0.06}>
                   <motion.div className="glass-card rounded-xl p-4 group" whileHover={{ y: -3 }}>
                     <CheckCircle2 size={14} className="text-[#DC2626] mb-2" />
-                    <h4 className="text-white font-bold text-xs font-heading">{c.l}</h4>
-                    <p className="text-white/20 text-[10px] mt-1">{c.d}</p>
+                    <h4 className="text-fg font-bold text-xs font-heading">{c.l}</h4>
+                    <p className="text-fg-3 text-[10px] mt-1">{c.d}</p>
                   </motion.div>
                 </Reveal>
               ))}
@@ -291,8 +291,8 @@ export default function IndustriesPage() {
       <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[#0A0A0A]/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-surface/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--th-overlay)] via-transparent to-[var(--th-overlay)]" />
         </div>
         <div className="absolute inset-0 noise pointer-events-none" />
         <div className="ctn relative z-10 max-w-3xl mx-auto">
@@ -305,8 +305,8 @@ export default function IndustriesPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                   <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase font-heading">Any Sector</span>
                 </span>
-                <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.05]">Don't See<br /><span className="text-gradient">Your Industry?</span></h2>
-                <p className="text-white/30 text-sm mt-5 max-w-md mx-auto">Our platform adapts to any sector. Let's discuss your unique challenges and build a custom solution.</p>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-fg tracking-tight leading-[1.05]">Don't See<br /><span className="text-gradient">Your Industry?</span></h2>
+                <p className="text-fg-4 text-sm mt-5 max-w-md mx-auto">Our platform adapts to any sector. Let's discuss your unique challenges and build a custom solution.</p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                   <Link to="/contact"><Btn><span className="flex items-center gap-2">Get in Touch <ArrowRight size={15} /></span></Btn></Link>
                   <Link to="/services"><Btn v="outline">Our Solutions</Btn></Link>

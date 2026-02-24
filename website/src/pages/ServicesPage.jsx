@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <section className="relative min-h-screen flex items-center overflow-hidden mesh-hero noise">
         <Orbs variant="red" />
         <div className="absolute inset-0 dots pointer-events-none" />
-        <div className="absolute -left-[8vw] top-1/2 -translate-y-1/2 text-[30vw] font-extrabold text-white/[0.012] leading-none select-none pointer-events-none ">S</div>
+        <div className="absolute -left-[8vw] top-1/2 -translate-y-1/2 text-[30vw] font-extrabold text-fg-6 leading-none select-none pointer-events-none ">S</div>
 
         <div className="ctn py-20 md:py-40 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -24,12 +24,12 @@ export default function ServicesPage() {
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
                 <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
-                  <span className="text-white/40 text-xs font-medium font-heading tracking-wide">4 core solutions</span>
+                  <span className="text-fg-4 text-xs font-medium font-heading tracking-wide">4 core solutions</span>
                 </span>
-                <h1 className="text-[clamp(2.2rem,7vw,6rem)] font-extrabold text-white leading-[0.95] tracking-tight ">
+                <h1 className="text-[clamp(2.2rem,7vw,6rem)] font-extrabold text-fg leading-[0.95] tracking-tight ">
                   Distribution<br /><span className="text-gradient">Reimagined</span>
                 </h1>
-                <p className="text-white/35 text-base mt-7 max-w-sm leading-relaxed">
+                <p className="text-fg-4 text-base mt-7 max-w-sm leading-relaxed">
                   Four pillars of excellence that power global brand growth from shelf to scale. Each one built to compound results.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-9">
@@ -63,11 +63,11 @@ export default function ServicesPage() {
                             <div className="w-11 h-11 rounded-xl flex items-center justify-center group-hover:shadow-lg transition-all duration-500" style={{ background: `${accents[i]}15` }}>
                               <Icon size={18} style={{ color: accents[i] }} />
                             </div>
-                            <span className="text-white/[0.04] text-4xl font-extrabold ">0{i + 1}</span>
+                            <span className="text-fg-6 text-4xl font-extrabold ">0{i + 1}</span>
                           </div>
                           <div>
-                            <h3 className="text-white font-bold text-sm font-heading group-hover:text-[#DC2626] transition-colors">{s.title}</h3>
-                            <p className="text-white/20 text-[10px] mt-1 line-clamp-2">{s.short}</p>
+                            <h3 className="text-fg font-bold text-sm font-heading group-hover:text-[#DC2626] transition-colors">{s.title}</h3>
+                            <p className="text-fg-3 text-[10px] mt-1 line-clamp-2">{s.short}</p>
                           </div>
                           <div className="absolute left-0 top-0 bottom-0 w-[2px] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ background: accents[i] }} />
                         </motion.div>
@@ -87,8 +87,8 @@ export default function ServicesPage() {
           <Link to={`/services/${SERVICES[0].id}`}>
             <div className="group relative h-[450px] md:h-[550px] cursor-pointer overflow-hidden">
               <img src={SERVICES[0].hero || SERVICES[0].image} alt={SERVICES[0].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/60 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/70 via-transparent to-[#0A0A0A]/30" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)] via-[var(--th-overlay)]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)]/70 via-transparent to-[var(--th-overlay)]/30" />
               <div className="absolute inset-0 bg-[#DC2626]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="absolute inset-0 noise pointer-events-none" />
 
@@ -101,15 +101,15 @@ export default function ServicesPage() {
                     </div>
                     <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.3em] uppercase font-heading">01 · Flagship Solution</span>
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-extrabold text-white  tracking-tight leading-[0.95] group-hover:text-[#DC2626] transition-colors duration-500">{SERVICES[0].title}</h2>
-                  <p className="text-white/40 text-sm md:text-base mt-4 max-w-md leading-relaxed">{SERVICES[0].description}</p>
+                  <h2 className="text-4xl md:text-6xl font-extrabold text-fg tracking-tight leading-[0.95] group-hover:text-[#DC2626] transition-colors duration-500">{SERVICES[0].title}</h2>
+                  <p className="text-fg-4 text-sm md:text-base mt-4 max-w-md leading-relaxed">{SERVICES[0].description}</p>
 
                   {/* Stats inline */}
                   <div className="flex items-center gap-6 mt-7">
                     {Object.entries(SERVICES[0].stats).slice(0, 3).map(([k, v], si) => (
                       <div key={k}>
-                        <p className="text-white font-bold text-lg font-heading">{v}</p>
-                        <p className="text-white/20 text-[10px]">{SERVICES[0].sLabels?.[k] || k}</p>
+                        <p className="text-fg font-bold text-lg font-heading">{v}</p>
+                        <p className="text-fg-3 text-[10px]">{SERVICES[0].sLabels?.[k] || k}</p>
                       </div>
                     ))}
                   </div>
@@ -121,7 +121,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Number watermark */}
-              <div className="absolute top-[10%] right-[5%] text-[200px] md:text-[280px] font-extrabold text-white/[0.03]  leading-none select-none pointer-events-none">01</div>
+              <div className="absolute top-[10%] right-[5%] text-[200px] md:text-[280px] font-extrabold text-fg-6  leading-none select-none pointer-events-none">01</div>
               <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#DC2626] via-[#EF4444] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
             </div>
           </Link>
@@ -129,7 +129,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ SERVICE 2 — Reversed: content left in glass panel, image right bleeding to edge ═══ */}
-      <section className="relative py-12 md:py-0 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-12 md:py-0 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <Reveal>
           <div className="grid lg:grid-cols-12 gap-0 items-center">
@@ -145,15 +145,15 @@ export default function ServicesPage() {
                     </div>
                     <span className="text-[#F97316] text-[10px] font-bold tracking-[0.3em] uppercase font-heading">02</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-white  tracking-tight group-hover:text-[#F97316] transition-colors">{SERVICES[1].title}</h2>
-                  <p className="text-white/30 text-sm mt-3 leading-relaxed">{SERVICES[1].description}</p>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-fg tracking-tight group-hover:text-[#F97316] transition-colors">{SERVICES[1].title}</h2>
+                  <p className="text-fg-4 text-sm mt-3 leading-relaxed">{SERVICES[1].description}</p>
 
                   {/* Features as checklist */}
                   <div className="mt-6 space-y-2.5">
                     {SERVICES[1].features.slice(0, 4).map((f, fi) => (
                       <div key={fi} className="flex items-center gap-2.5">
                         <CheckCircle2 size={13} className="text-[#F97316] flex-shrink-0" />
-                        <span className="text-white/40 text-xs font-heading">{f.name}</span>
+                        <span className="text-fg-4 text-xs font-heading">{f.name}</span>
                       </div>
                     ))}
                   </div>
@@ -169,11 +169,11 @@ export default function ServicesPage() {
             {/* Image — right, bleeding to viewport edge */}
             <div className="lg:col-span-7 relative h-[350px] lg:h-[520px]">
               <img src={SERVICES[1].hero || SERVICES[1].image} alt={SERVICES[1].title} className="w-full h-full object-cover" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)] via-[var(--th-overlay)]/30 to-transparent" />
               <div className="absolute inset-0 bg-[#F97316]/5 mix-blend-overlay" />
               <div className="absolute inset-0 noise pointer-events-none" />
               {/* Number */}
-              <div className="absolute bottom-6 right-8 text-[120px] font-extrabold text-white/[0.04]  leading-none select-none">02</div>
+              <div className="absolute bottom-6 right-8 text-[120px] font-extrabold text-fg-6  leading-none select-none">02</div>
             </div>
           </div>
         </Reveal>
@@ -190,8 +190,8 @@ export default function ServicesPage() {
               <Link to={`/services/${SERVICES[2].id}`}>
                 <motion.div className="group relative rounded-[2rem] overflow-hidden h-[420px] md:h-[500px] cursor-pointer" whileHover={{ y: -4 }}>
                   <img src={SERVICES[2].hero || SERVICES[2].image} alt={SERVICES[2].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/40 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)]/70 to-transparent" />
                   <div className="absolute inset-0 bg-[#8B5CF6]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute inset-0 noise pointer-events-none" />
 
@@ -203,15 +203,15 @@ export default function ServicesPage() {
                         </div>
                         <span className="text-[#8B5CF6] text-[10px] font-bold tracking-[0.3em] uppercase font-heading">03</span>
                       </div>
-                      <h2 className="text-2xl md:text-4xl font-extrabold text-white  tracking-tight leading-[1.05] group-hover:text-[#8B5CF6] transition-colors">{SERVICES[2].title}</h2>
-                      <p className="text-white/35 text-sm mt-3 leading-relaxed">{SERVICES[2].short}</p>
+                      <h2 className="text-2xl md:text-4xl font-extrabold text-fg tracking-tight leading-[1.05] group-hover:text-[#8B5CF6] transition-colors">{SERVICES[2].title}</h2>
+                      <p className="text-fg-4 text-sm mt-3 leading-relaxed">{SERVICES[2].short}</p>
 
                       {/* Stats inline */}
                       <div className="flex items-center gap-5 mt-5">
                         {Object.entries(SERVICES[2].stats).slice(0, 2).map(([k, v]) => (
                           <div key={k} className="glass rounded-lg px-3 py-2">
-                            <p className="text-white font-bold text-sm font-heading">{v}</p>
-                            <p className="text-white/20 text-[9px]">{SERVICES[2].sLabels?.[k] || k}</p>
+                            <p className="text-fg font-bold text-sm font-heading">{v}</p>
+                            <p className="text-fg-3 text-[9px]">{SERVICES[2].sLabels?.[k] || k}</p>
                           </div>
                         ))}
                       </div>
@@ -221,7 +221,7 @@ export default function ServicesPage() {
                       </span>
                     </div>
                   </div>
-                  <div className="absolute top-4 right-6 text-[100px] font-extrabold text-white/[0.04]  leading-none select-none pointer-events-none">03</div>
+                  <div className="absolute top-4 right-6 text-[100px] font-extrabold text-fg-6  leading-none select-none pointer-events-none">03</div>
                   <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#8B5CF6] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
                 </motion.div>
               </Link>
@@ -241,15 +241,15 @@ export default function ServicesPage() {
                           </div>
                           <span className="text-[#06B6D4] text-[10px] font-bold tracking-[0.3em] uppercase font-heading">04</span>
                         </div>
-                        <span className="text-white/[0.04] text-6xl font-extrabold  leading-none">04</span>
+                        <span className="text-fg-6 text-6xl font-extrabold  leading-none">04</span>
                       </div>
-                      <h2 className="text-xl font-extrabold text-white  tracking-tight group-hover:text-[#06B6D4] transition-colors">{SERVICES[3].title}</h2>
-                      <p className="text-white/25 text-sm mt-2 leading-relaxed">{SERVICES[3].description}</p>
+                      <h2 className="text-xl font-extrabold text-fg tracking-tight group-hover:text-[#06B6D4] transition-colors">{SERVICES[3].title}</h2>
+                      <p className="text-fg-3 text-sm mt-2 leading-relaxed">{SERVICES[3].description}</p>
                     </div>
 
                     <div className="relative z-10 flex flex-wrap gap-2 mt-5">
                       {SERVICES[3].features.slice(0, 3).map((f, fi) => (
-                        <span key={fi} className="inline-flex items-center gap-1.5 glass text-white/25 px-3 py-1.5 rounded-full text-[10px] font-heading font-medium">
+                        <span key={fi} className="inline-flex items-center gap-1.5 glass text-fg-3 px-3 py-1.5 rounded-full text-[10px] font-heading font-medium">
                           <CheckCircle2 size={9} className="text-[#06B6D4]" />{f.name}
                         </span>
                       ))}
@@ -267,12 +267,12 @@ export default function ServicesPage() {
               <Reveal delay={0.2}>
                 <div className="relative rounded-[1.5rem] overflow-hidden h-[180px] group">
                   <img src={SERVICES[3].hero || SERVICES[3].image} alt={SERVICES[3].title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/30 to-transparent" />
                   <div className="absolute inset-0 bg-[#06B6D4]/5 mix-blend-overlay" />
                   {/* Floating stat */}
                   <motion.div className="absolute bottom-4 left-4 glass-strong rounded-xl px-4 py-2.5 shadow-lg" animate={{ y: [0, -4, 0] }} transition={{ duration: 4, repeat: Infinity }}>
-                    <p className="text-white font-bold text-sm font-heading">{Object.values(SERVICES[3].stats)[0]}</p>
-                    <p className="text-white/25 text-[9px]">{SERVICES[3].sLabels?.[Object.keys(SERVICES[3].stats)[0]] || Object.keys(SERVICES[3].stats)[0]}</p>
+                    <p className="text-fg font-bold text-sm font-heading">{Object.values(SERVICES[3].stats)[0]}</p>
+                    <p className="text-fg-3 text-[9px]">{SERVICES[3].sLabels?.[Object.keys(SERVICES[3].stats)[0]] || Object.keys(SERVICES[3].stats)[0]}</p>
                   </motion.div>
                 </div>
               </Reveal>
@@ -282,14 +282,14 @@ export default function ServicesPage() {
       </section>
 
       {/* ═══ HOW IT WORKS — Horizontal process strip ═══ */}
-      <section className="relative py-12 md:py-24 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <div className="ctn relative z-10">
           <Heading tag="Process" title="How We" accent=" Deliver" desc="A proven methodology refined over 25 years of global execution." />
 
           <div className="grid md:grid-cols-4 gap-0 relative">
             {/* Connecting line */}
-            <div className="hidden md:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-[#DC2626]/30 via-white/5 to-[#DC2626]/30" />
+            <div className="hidden md:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-[#DC2626]/30 via-fg/5 to-[#DC2626]/30" />
 
             {["Discovery & Audit", "Strategy & Design", "Execution & Deploy", "Optimize & Scale"].map((step, i) => {
               const colors = ["#DC2626", "#F97316", "#8B5CF6", "#06B6D4"];
@@ -305,7 +305,7 @@ export default function ServicesPage() {
                 <Reveal key={i} delay={i * 0.1}>
                   <motion.div className="group relative text-center px-4 py-6" whileHover={{ y: -4 }}>
                     {/* Circle node */}
-                    <div className="w-[52px] h-[52px] rounded-full mx-auto flex items-center justify-center relative z-10 transition-all duration-500 group-hover:shadow-lg border border-white/5 bg-[#111]" style={{ boxShadow: `0 0 0 0px ${colors[i]}00` }}>
+                    <div className="w-[52px] h-[52px] rounded-full mx-auto flex items-center justify-center relative z-10 transition-all duration-500 group-hover:shadow-lg border border-border bg-surface-2" style={{ boxShadow: `0 0 0 0px ${colors[i]}00` }}>
                       <div className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500" style={{ background: `${colors[i]}15` }}>
                         <Ic size={16} style={{ color: colors[i] }} />
                       </div>
@@ -314,8 +314,8 @@ export default function ServicesPage() {
                     {/* Step number */}
                     <div className="text-5xl font-extrabold  mt-4 leading-none" style={{ color: `${colors[i]}10` }}>0{i + 1}</div>
 
-                    <h3 className="text-white font-bold text-sm font-heading mt-2">{step}</h3>
-                    <p className="text-white/20 text-[11px] mt-2 leading-relaxed max-w-[200px] mx-auto">{descs[i]}</p>
+                    <h3 className="text-fg font-bold text-sm font-heading mt-2">{step}</h3>
+                    <p className="text-fg-3 text-[11px] mt-2 leading-relaxed max-w-[200px] mx-auto">{descs[i]}</p>
                   </motion.div>
                 </Reveal>
               );
@@ -330,10 +330,10 @@ export default function ServicesPage() {
           <div className="grid lg:grid-cols-12 gap-6 items-center">
             <Reveal className="lg:col-span-4">
               <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase font-heading">Why Rajaton?</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-white  tracking-tight mt-2 leading-[1.05]">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-fg tracking-tight mt-2 leading-[1.05]">
                 The Distribution<br /><span className="text-gradient">Advantage</span>
               </h2>
-              <p className="text-white/30 text-sm mt-4 leading-relaxed">What separates us from every other distributor on the planet.</p>
+              <p className="text-fg-4 text-sm mt-4 leading-relaxed">What separates us from every other distributor on the planet.</p>
             </Reveal>
 
             <div className="lg:col-span-8 grid sm:grid-cols-2 gap-4">
@@ -346,9 +346,9 @@ export default function ServicesPage() {
                 <Reveal key={i} delay={i * 0.08}>
                   <motion.div className="glass-card rounded-[1.5rem] p-6 group relative overflow-hidden" whileHover={{ y: -3 }}>
                     <div className="absolute -bottom-6 -right-6 w-16 h-16 rounded-full bg-[#DC2626]/5 blur-xl group-hover:bg-[#DC2626]/10 transition-colors" />
-                    <p className="text-3xl font-extrabold text-white  tracking-tight">{s.n}</p>
+                    <p className="text-3xl font-extrabold text-fg tracking-tight">{s.n}</p>
                     <p className="text-[#DC2626] text-xs font-bold font-heading mt-1">{s.l}</p>
-                    <p className="text-white/20 text-[10px] mt-1.5">{s.d}</p>
+                    <p className="text-fg-3 text-[10px] mt-1.5">{s.d}</p>
                   </motion.div>
                 </Reveal>
               ))}
@@ -361,8 +361,8 @@ export default function ServicesPage() {
       <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[#0A0A0A]/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-surface/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--th-overlay)] via-transparent to-[var(--th-overlay)]" />
         </div>
         <div className="absolute inset-0 noise pointer-events-none" />
         <div className="ctn relative z-10 max-w-3xl mx-auto">
@@ -375,8 +375,8 @@ export default function ServicesPage() {
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                   <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase font-heading">Custom Solutions</span>
                 </span>
-                <h2 className="text-3xl md:text-5xl font-extrabold text-white  tracking-tight leading-[1.05]">Need Something<br /><span className="text-gradient">Tailored?</span></h2>
-                <p className="text-white/30 text-sm mt-5 max-w-md mx-auto">Our team will design a bespoke distribution strategy for your brand's unique needs.</p>
+                <h2 className="text-3xl md:text-5xl font-extrabold text-fg tracking-tight leading-[1.05]">Need Something<br /><span className="text-gradient">Tailored?</span></h2>
+                <p className="text-fg-4 text-sm mt-5 max-w-md mx-auto">Our team will design a bespoke distribution strategy for your brand's unique needs.</p>
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                   <Link to="/contact"><Btn><span className="flex items-center gap-2">Talk to Our Team <ArrowRight size={15} /></span></Btn></Link>
                   <Link to="/about"><Btn v="outline">About Rajaton</Btn></Link>

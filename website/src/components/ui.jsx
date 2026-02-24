@@ -12,9 +12,9 @@ export function Btn({ children, className = "", onClick, v = "primary", type = "
 
   const styles = {
     primary: "bg-[#DC2626] text-white hover:bg-[#B91C1C] shadow-xl shadow-red-500/20 hover:shadow-red-500/30",
-    outline: "border border-white/20 text-white hover:bg-white/5 hover:border-white/40",
-    white: "bg-white text-[#0A0A0A] hover:bg-gray-100 shadow-xl",
-    glass: "glass-strong text-white hover:bg-white/10",
+    outline: "border border-border-4 text-fg hover:bg-fg/5 hover:border-fg/40",
+    white: "bg-fg text-surface hover:bg-fg/90 shadow-xl",
+    glass: "glass-strong text-fg hover:bg-fg/10",
   };
 
   return (
@@ -93,10 +93,10 @@ export function Heading({ tag, title, accent, desc, center = true, className = "
   return (
     <Reveal className={`${center ? "text-center" : ""} mb-16 lg:mb-20 ${className}`}>
       {tag && <span className="inline-flex items-center gap-2 text-[#DC2626] text-xs font-bold tracking-[0.2em] uppercase font-heading mb-4"><span className="w-8 h-px bg-[#DC2626]" />{tag}<span className="w-8 h-px bg-[#DC2626]" /></span>}
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mt-2 font-display tracking-tight leading-[1.05]">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-fg mt-2 font-display tracking-tight leading-[1.05]">
         {title}{accent && <><br className="hidden sm:block" /><span className="text-gradient">{accent}</span></>}
       </h2>
-      {desc && <p className={`text-gray-400 mt-5 text-lg leading-relaxed font-body ${center ? "max-w-2xl mx-auto" : "max-w-xl"}`}>{desc}</p>}
+      {desc && <p className={`text-fg-muted mt-5 text-lg leading-relaxed font-body ${center ? "max-w-2xl mx-auto" : "max-w-xl"}`}>{desc}</p>}
     </Reveal>
   );
 }

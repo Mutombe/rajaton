@@ -17,7 +17,7 @@ const CaseDetail = lazy(() => import("@/pages/CaseStudiesPage").then(m => ({ def
 
 function Loader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0A0A0A]">
+    <div className="min-h-screen flex items-center justify-center bg-surface">
       <div className="relative w-10 h-10">
         <motion.div className="absolute inset-0 border-2 border-[#DC2626]/20 border-t-[#DC2626] rounded-full"
           animate={{ rotate: 360 }} transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }} />
@@ -43,7 +43,7 @@ export default function App() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [loc.pathname]);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white overflow-x-hidden niveau-font">
+    <div className="min-h-screen bg-surface text-fg overflow-x-hidden niveau-font">
                         <style jsx>{`
             /* Niveau Grotesk Font Face - Regular */
             @font-face {

@@ -33,7 +33,7 @@ export default function AboutPage() {
       <section className="relative min-h-screen flex items-center overflow-hidden mesh-hero noise">
         <Orbs variant="red" />
         <div className="absolute inset-0 dots pointer-events-none" />
-        <div className="absolute -left-[10vw] top-1/2 -translate-y-1/2 text-[35vw] font-extrabold text-white/[0.012] leading-none select-none pointer-events-none font-display">A</div>
+        <div className="absolute -left-[10vw] top-1/2 -translate-y-1/2 text-[35vw] font-extrabold text-fg-6 leading-none select-none pointer-events-none font-display">A</div>
 
         <div className="ctn py-20 md:py-40 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -42,12 +42,12 @@ export default function AboutPage() {
               <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
                 <span className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
-                  <span className="text-white/40 text-xs font-medium  tracking-wide">Est. 2001 · Sandton, South Africa</span>
+                  <span className="text-fg-4 text-xs font-medium  tracking-wide">Est. 2001 · Sandton, South Africa</span>
                 </span>
-                <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-white leading-[0.95] tracking-tight font-display">
+                <h1 className="text-[clamp(2.2rem,7vw,6.5rem)] font-extrabold text-fg leading-[0.95] tracking-tight font-display">
                   Limitless<br />by <span className="text-gradient">Design</span>
                 </h1>
-                <p className="text-white/35 text-base md:text-lg mt-8 max-w-md leading-relaxed">
+                <p className="text-fg-4 text-base md:text-lg mt-8 max-w-md leading-relaxed">
                   "Rajaton" means limitless in Finnish. It's not just our name — it's our philosophy. No borders, no boundaries, no limits to what we can achieve together.
                 </p>
                 <div className="flex flex-wrap items-center gap-3 mt-10">
@@ -56,11 +56,11 @@ export default function AboutPage() {
                 </div>
 
                 {/* Quick stats row */}
-                <div className="flex items-center gap-6 mt-12 pt-8 border-t border-white/5">
+                <div className="flex items-center gap-6 mt-12 pt-8 border-t border-border">
                   {[{ n: "25+", l: "Years" }, { n: "47", l: "Countries" }, { n: "200+", l: "Brands" }, { n: "8K+", l: "Team" }].map((s, i) => (
                     <div key={i}>
-                      <p className="text-white font-extrabold text-lg font-display">{s.n}</p>
-                      <p className="text-white/20 text-[10px] ">{s.l}</p>
+                      <p className="text-fg font-extrabold text-lg font-display">{s.n}</p>
+                      <p className="text-fg-3 text-[10px] ">{s.l}</p>
                     </div>
                   ))}
                 </div>
@@ -78,13 +78,13 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 pt-16">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="relative group">
                   <div className="absolute -inset-2 rounded-[3rem] bg-[#DC2626] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" />
-                  <div className="relative w-[140px] h-[190px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl">
+                  <div className="relative w-[140px] h-[190px] rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl">
                     <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80" alt="Team" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="relative group">
                   <div className="absolute -inset-2 rounded-[3rem] bg-[#10B981] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" />
-                  <div className="relative w-[140px] h-[160px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl">
+                  <div className="relative w-[140px] h-[160px] rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl">
                     <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=80" alt="Operations" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                   </div>
                 </motion.div>
@@ -94,13 +94,13 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 -mt-8">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35, duration: 0.8 }} className="relative group">
                   <div className="absolute -inset-2 rounded-[3rem] bg-[#F97316] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" />
-                  <div className="relative w-[150px] h-[210px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl">
+                  <div className="relative w-[150px] h-[210px] rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl">
                     <img src="/10.jpg" alt="Global logistics" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                   </div>
                 </motion.div>
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 0.8 }} className="relative group">
                   <div className="absolute -inset-2 rounded-[3rem] bg-[#8B5CF6] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" />
-                  <div className="relative w-[150px] h-[180px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl">
+                  <div className="relative w-[150px] h-[180px] rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl">
                     <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80" alt="Strategy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                   </div>
                 </motion.div>
@@ -110,7 +110,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 pt-24">
                 <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="relative group">
                   <div className="absolute -inset-2 rounded-[3rem] bg-[#06B6D4] opacity-20 blur-sm group-hover:opacity-35 transition-opacity" />
-                  <div className="relative w-[130px] h-[200px] rounded-[2.5rem] overflow-hidden border border-white/10 shadow-xl">
+                  <div className="relative w-[130px] h-[200px] rounded-[2.5rem] overflow-hidden border border-border-3 shadow-xl">
                     <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80" alt="Warehouse" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="eager" />
                   </div>
                 </motion.div>
@@ -119,8 +119,8 @@ export default function AboutPage() {
               {/* Floating glass badge */}
               <motion.div className="absolute bottom-[20%] left-[10%] z-20 glass-strong rounded-2xl px-5 py-4 shadow-2xl glow-red-sm"
                 animate={{ y: [0, -6, 0] }} transition={{ duration: 5, repeat: Infinity }}>
-                <p className="text-white font-extrabold text-2xl font-display leading-none">25+</p>
-                <p className="text-white/30 text-[9px]  font-semibold mt-1">Years of Excellence</p>
+                <p className="text-fg font-extrabold text-2xl font-display leading-none">25+</p>
+                <p className="text-fg-4 text-[9px]  font-semibold mt-1">Years of Excellence</p>
               </motion.div>
             </div>
           </div>
@@ -132,13 +132,13 @@ export default function AboutPage() {
         {/* Full-bleed cinematic image */}
         <div className="relative h-[500px] md:h-[600px]">
           <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1400&q=80" alt="Rajaton headquarters" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[#0A0A0A]/70" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-surface/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--th-overlay)] via-transparent to-[var(--th-overlay)]" />
           <div className="absolute inset-0 bg-[#DC2626]/5 mix-blend-overlay" />
           <div className="absolute inset-0 noise pointer-events-none" />
 
           {/* Large text watermark */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-extrabold text-white/[0.03] font-display leading-none select-none pointer-events-none whitespace-nowrap">RAJATON</div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-extrabold text-fg-6 font-display leading-none select-none pointer-events-none whitespace-nowrap">RAJATON</div>
         </div>
 
         {/* Glass panels overlapping from below — pulled up into the image */}
@@ -154,10 +154,10 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase ">Our Mission</span>
-                      <h3 className="text-white text-lg font-bold ">Why We Exist</h3>
+                      <h3 className="text-fg text-lg font-bold ">Why We Exist</h3>
                     </div>
                   </div>
-                  <p className="text-white/40 text-sm md:text-base leading-relaxed">
+                  <p className="text-fg-4 text-sm md:text-base leading-relaxed">
                     To be the invisible force connecting great brands with every consumer, everywhere. We make distribution seamless, intelligent, and limitless — empowering brands to focus on what they do best while we handle the rest.
                   </p>
                 </div>
@@ -171,15 +171,15 @@ export default function AboutPage() {
                 <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-black/15 blur-3xl" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-fg/15 flex items-center justify-center">
                       <Rocket size={20} className="text-white" />
                     </div>
                     <div>
-                      <span className="text-white/50 text-[10px] font-bold tracking-[0.2em] uppercase ">Our Vision</span>
+                      <span className="text-fg-3 text-[10px] font-bold tracking-[0.2em] uppercase ">Our Vision</span>
                       <h3 className="text-white text-lg font-bold ">Where We're Going</h3>
                     </div>
                   </div>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                  <p className="text-fg-2 text-sm md:text-base leading-relaxed">
                     A world where every product reaches its consumer through the most efficient, sustainable, and intelligent distribution network ever built. Technology and human expertise, combined without limits.
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ VALUES — Bento Layout: 2 large featured + 4 compact + decorative image ═══ */}
-      <section className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
+      <section className="relative py-16 md:py-32 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="top-[10%] right-[5%]" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -207,12 +207,12 @@ export default function AboutPage() {
                 </div>
                 ); })()}
                 <div>
-                  <h3 className="text-white text-2xl font-bold  mb-2">{VALUES[0].title}</h3>
-                  <p className="text-white/30 text-sm leading-relaxed">{VALUES[0].d}</p>
-                  <p className="text-white/15 text-xs mt-4 leading-relaxed">From warehouse temperature controls to shelf-level planogram compliance, our obsession with precision creates trust that compound over decades.</p>
+                  <h3 className="text-fg text-2xl font-bold  mb-2">{VALUES[0].title}</h3>
+                  <p className="text-fg-4 text-sm leading-relaxed">{VALUES[0].d}</p>
+                  <p className="text-fg-4 text-xs mt-4 leading-relaxed">From warehouse temperature controls to shelf-level planogram compliance, our obsession with precision creates trust that compound over decades.</p>
                 </div>
                 {/* Number watermark */}
-                <div className="absolute top-6 right-8 text-[100px] font-extrabold text-white/[0.02] font-display leading-none select-none">01</div>
+                <div className="absolute top-6 right-8 text-[100px] font-extrabold text-fg-6 font-display leading-none select-none">01</div>
               </motion.div>
             </Reveal>
 
@@ -220,18 +220,18 @@ export default function AboutPage() {
             <Reveal className="md:col-span-7" delay={0.08}>
               <motion.div className="relative rounded-[2rem] overflow-hidden h-[200px] group cursor-default" whileHover={{ y: -3 }}>
                 <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Global team" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--th-overlay)] via-[var(--th-overlay)]/70 to-transparent" />
                 <div className="absolute inset-0 bg-[#DC2626]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute inset-0 flex items-center p-8">
                   <div>
                     <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3" style={{ background: `${VALUES[1].accent}15` }}>
                       {(() => { const Ic = VALUES[1].icon; return <Ic size={20} style={{ color: VALUES[1].accent }} />; })()}
                     </div>
-                    <h3 className="text-white text-xl font-bold ">{VALUES[1].title}</h3>
-                    <p className="text-white/35 text-sm mt-1.5 max-w-xs">{VALUES[1].d}</p>
+                    <h3 className="text-fg text-xl font-bold ">{VALUES[1].title}</h3>
+                    <p className="text-fg-4 text-sm mt-1.5 max-w-xs">{VALUES[1].d}</p>
                   </div>
                 </div>
-                <div className="absolute top-4 right-6 text-7xl font-extrabold text-white/[0.04] font-display leading-none">02</div>
+                <div className="absolute top-4 right-6 text-7xl font-extrabold text-fg-6 font-display leading-none">02</div>
               </motion.div>
             </Reveal>
 
@@ -245,10 +245,10 @@ export default function AboutPage() {
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:shadow-md" style={{ background: `${v.accent}15` }}>
                         <v.icon size={16} style={{ color: v.accent }} />
                       </div>
-                      <span className="text-white/[0.04] text-3xl font-extrabold font-display">0{i + 3}</span>
+                      <span className="text-fg-6 text-3xl font-extrabold font-display">0{i + 3}</span>
                     </div>
-                    <h3 className="text-white font-bold text-sm  mb-1.5">{v.title}</h3>
-                    <p className="text-white/25 text-xs leading-relaxed">{v.d}</p>
+                    <h3 className="text-fg font-bold text-sm  mb-1.5">{v.title}</h3>
+                    <p className="text-fg-3 text-xs leading-relaxed">{v.d}</p>
                   </div>
                   {/* Left accent bar */}
                   <div className="absolute left-0 top-0 bottom-0 w-[2px] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top" style={{ background: v.accent }} />
@@ -260,7 +260,7 @@ export default function AboutPage() {
             <Reveal className="hidden xl:block xl:col-span-1" delay={0.4}>
               <div className="relative h-full min-h-[120px]">
                 <div className="absolute -inset-1 rounded-[1.5rem] bg-[#DC2626] opacity-15 blur-sm" />
-                <div className="relative rounded-[1.5rem] overflow-hidden h-full border border-white/10">
+                <div className="relative rounded-[1.5rem] overflow-hidden h-full border border-border-3">
                   <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
@@ -285,7 +285,7 @@ export default function AboutPage() {
                 <Reveal key={i} delay={i * 0.08}>
                   <motion.div className="group relative" whileHover={{ y: -6 }}>
                     {/* Image pill at top */}
-                    <div className="relative mx-auto w-full max-w-[140px] h-[100px] rounded-[1.5rem] overflow-hidden mb-4 border border-white/8 shadow-lg">
+                    <div className="relative mx-auto w-full max-w-[140px] h-[100px] rounded-[1.5rem] overflow-hidden mb-4 border border-border-2 shadow-lg">
                       <img src={t.img} alt={t.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" loading="lazy" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 mix-blend-overlay bg-[#DC2626]" />
@@ -293,14 +293,14 @@ export default function AboutPage() {
 
                     {/* Dot on the line */}
                     <div className="hidden md:flex justify-center mb-4">
-                      <div className="w-3 h-3 rounded-full bg-[#DC2626] border-[3px] border-[#111] glow-red-sm group-hover:scale-150 transition-transform" />
+                      <div className="w-3 h-3 rounded-full bg-[#DC2626] border-[3px] border-surface-2 glow-red-sm group-hover:scale-150 transition-transform" />
                     </div>
 
                     {/* Content card */}
                     <div className="glass-card rounded-xl p-4 text-center group-hover:border-[#DC2626]/20 transition-colors">
                       <span className="text-gradient font-extrabold text-xl font-display">{t.year}</span>
-                      <h3 className="text-white font-bold text-xs  mt-1">{t.title}</h3>
-                      <p className="text-white/20 text-[10px] mt-1.5 leading-relaxed">{t.d}</p>
+                      <h3 className="text-fg font-bold text-xs  mt-1">{t.title}</h3>
+                      <p className="text-fg-3 text-[10px] mt-1.5 leading-relaxed">{t.d}</p>
                     </div>
                   </motion.div>
                 </Reveal>
@@ -311,7 +311,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ TEAM — Featured CEO + Creative Grid ═══ */}
-      <section id="team" className="relative py-16 md:py-32 bg-[#0A0A0A] overflow-hidden">
+      <section id="team" className="relative py-16 md:py-32 bg-surface overflow-hidden">
         <div className="absolute inset-0 dots pointer-events-none" />
         <MorphBlob className="bottom-[5%] right-[5%]" size={400} color="rgba(220,38,38,0.04)" />
         <div className="ctn relative z-10">
@@ -322,17 +322,17 @@ export default function AboutPage() {
             <Reveal className="md:col-span-5 md:row-span-2">
               <motion.div className="group relative rounded-[2rem] overflow-hidden h-full min-h-[500px]" whileHover={{ y: -4 }}>
                 <img src={TEAM[0].img} alt={TEAM[0].name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/30 to-transparent" />
                 <div className="absolute inset-0 bg-[#DC2626]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                 {/* Content at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9">
                   <div className="glass-strong rounded-2xl p-5 shadow-2xl">
                     <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase ">{TEAM[0].role}</span>
-                    <h3 className="text-white text-2xl font-bold  mt-1">{TEAM[0].name}</h3>
-                    <p className="text-white/30 text-sm mt-2">{TEAM[0].bio}</p>
-                    <a href="#" className="inline-flex mt-3 w-8 h-8 rounded-full bg-white/5 items-center justify-center hover:bg-[#DC2626]/20 transition-colors">
-                      <Linkedin size={13} className="text-white/40" />
+                    <h3 className="text-fg text-2xl font-bold  mt-1">{TEAM[0].name}</h3>
+                    <p className="text-fg-4 text-sm mt-2">{TEAM[0].bio}</p>
+                    <a href="#" className="inline-flex mt-3 w-8 h-8 rounded-full bg-fg/5 items-center justify-center hover:bg-[#DC2626]/20 transition-colors">
+                      <Linkedin size={13} className="text-fg-4" />
                     </a>
                   </div>
                 </div>
@@ -344,18 +344,18 @@ export default function AboutPage() {
               <Reveal key={i} className="md:col-span-3 lg:col-span-3 xl:col-span-3" delay={0.08 + i * 0.06}>
                 <motion.div className="group relative rounded-[1.5rem] overflow-hidden h-[240px]" whileHover={{ y: -4 }}>
                   <img src={m.img} alt={m.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--th-overlay)] via-[var(--th-overlay)]/30 to-transparent" />
                   <div className="absolute inset-0 bg-[#DC2626]/5 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity" />
 
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <div className="glass-strong rounded-lg p-3">
                       <div className="flex items-center justify-between">
                         <div>
-                          <h3 className="text-white font-bold text-xs ">{m.name}</h3>
+                          <h3 className="text-fg font-bold text-xs ">{m.name}</h3>
                           <p className="text-[#DC2626] text-[10px] font-semibold ">{m.role}</p>
                         </div>
-                        <a href="#" className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#DC2626]/20 transition-colors flex-shrink-0">
-                          <Linkedin size={10} className="text-white/30" />
+                        <a href="#" className="w-6 h-6 rounded-full bg-fg/5 flex items-center justify-center hover:bg-[#DC2626]/20 transition-colors flex-shrink-0">
+                          <Linkedin size={10} className="text-fg-4" />
                         </a>
                       </div>
                     </div>
@@ -374,7 +374,7 @@ export default function AboutPage() {
                       <ArrowUpRight size={20} className="text-[#DC2626]" />
                     </div>
                     <h3 className="text-white font-bold  text-sm">Join Our Team</h3>
-                    <p className="text-white/25 text-xs mt-1">10+ open positions worldwide</p>
+                    <p className="text-fg-3 text-xs mt-1">10+ open positions worldwide</p>
                   </div>
                 </motion.div>
               </Link>
@@ -387,8 +387,8 @@ export default function AboutPage() {
       <section className="relative py-16 md:py-32 overflow-hidden">
         <div className="absolute inset-0">
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80" alt="" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-[#0A0A0A]/85" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-transparent to-[#0A0A0A]" />
+          <div className="absolute inset-0 bg-surface/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--th-overlay)] via-transparent to-[var(--th-overlay)]" />
         </div>
         <div className="absolute inset-0 noise pointer-events-none" />
         <div className="ctn relative z-10">
@@ -402,8 +402,8 @@ export default function AboutPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#DC2626] animate-pulse" />
                     <span className="text-[#DC2626] text-[10px] font-bold tracking-[0.2em] uppercase ">Partner With Us</span>
                   </span>
-                  <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight leading-[1.05]">Ready to Go<br /><span className="text-gradient">Limitless?</span></h2>
-                  <p className="text-white/30 text-sm mt-5 max-w-md mx-auto">Let's discuss how Rajaton can transform your distribution strategy across any market.</p>
+                  <h2 className="text-3xl md:text-5xl font-extrabold text-fg font-display tracking-tight leading-[1.05]">Ready to Go<br /><span className="text-gradient">Limitless?</span></h2>
+                  <p className="text-fg-4 text-sm mt-5 max-w-md mx-auto">Let's discuss how Rajaton can transform your distribution strategy across any market.</p>
                   <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
                     <Link to="/contact"><Btn><span className="flex items-center gap-2">Get Started <ArrowRight size={15} /></span></Btn></Link>
                     <Link to="/services"><Btn v="outline">Our Solutions</Btn></Link>

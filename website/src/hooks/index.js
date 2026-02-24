@@ -29,3 +29,5 @@ export function useSEO(title, desc) {
 }
 
 export { useScrollY as useScrollPosition };
+
+export { useTheme, ThemeProvider } from "./useTheme";
