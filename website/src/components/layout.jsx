@@ -12,6 +12,7 @@ import {
   ArrowUp,
   Cookie,
   Lock,
+  FileText,
 } from "lucide-react";
 import { useScrollY, useWindowSize } from "@/hooks";
 import { useTheme } from "@/hooks/useTheme";
@@ -463,7 +464,10 @@ export function Footer({ openPolicy }) {
             >
               Cookies
             </button>
-            <button className="text-fg-4 hover:text-fg-2 text-xs transition-colors">
+            <button
+              onClick={() => openPolicy("terms")}
+              className="text-fg-4 hover:text-fg-2 text-xs transition-colors"
+            >
               Terms
             </button>
           </div>
@@ -523,46 +527,151 @@ export function CookieBanner({ onAccept, onManage }) {
    POLICY MODAL
    ═══════════════════════════════════════════════════ */
 export function PolicyModal({ type, onClose }) {
-  const Icon = type === "privacy" ? Lock : Cookie;
-  const title = type === "privacy" ? "Privacy Policy" : "Cookie Policy";
-  const sections =
-    type === "privacy"
-      ? [
-          {
-            h: "Information We Collect",
-            t: "We collect name, email, phone, and company details when you contact us or apply for positions.",
-          },
-          {
-            h: "How We Use It",
-            t: "To provide services, communicate, process applications, and comply with legal obligations. We never sell personal data.",
-          },
-          {
-            h: "Data Security",
-            t: "Industry-standard encryption, access controls, and regular security audits across all systems.",
-          },
-          {
-            h: "Your Rights",
-            t: "Access, correct, delete, or port your data. Contact privacy@rajaton.com.",
-          },
-        ]
-      : [
-          {
-            h: "Essential Cookies",
-            t: "Required for navigation, security, and session management. Cannot be disabled.",
-          },
-          {
-            h: "Analytics Cookies",
-            t: "Anonymous usage data to help us improve the experience.",
-          },
-          {
-            h: "Marketing Cookies",
-            t: "Deliver relevant ads and track campaign effectiveness.",
-          },
-          {
-            h: "Managing Cookies",
-            t: "Manage via browser settings. Disabling some may affect functionality.",
-          },
-        ];
+  const Icon = type === "privacy" ? Lock : type === "terms" ? FileText : Cookie;
+  const title = type === "privacy" ? "Privacy Policy" : type === "terms" ? "Terms & Conditions" : "Cookie Policy";
+
+  const PRIVACY_SECTIONS = [
+    {
+      h: "Rajaton Brand Solutions Privacy Notice",
+      t: "At Rajaton Brand Solutions (Pty) Ltd and its subsidiary companies (collectively referred to as \"Rajaton\", \"we\", \"our\", or \"us\"), we are committed to protecting your privacy and ensuring the security of your personal information. We process personal data in compliance with the Protection of Personal Information Act 4 of 2013 (\"POPIA\"), including but not limited to Section 4 (Conditions for Lawful Processing) and Section 5 (Rights of Data Subjects).\n\nThis policy explains how we collect, use, share, and protect your data, and your rights regarding this information.",
+    },
+    {
+      h: "1. Information We Collect",
+      t: "Personal Identifiers: Name, ID number, passport number, and date of birth.\n\nContact Information: Address, phone numbers, and email addresses.\n\nFinancial Information: Bank account details, transaction history, and credit assessments.\n\nDigital Data: IP addresses, browser type, cookies, and website activity.\n\nSensitive Data: Biometric data (e.g., fingerprints) and health-related data for specific services, with safeguards as per Section 26 of POPIA.\n\nChildren's Data: No collection without parental or guardian consent, per Section 35 of POPIA.\n\nLocation Data: Collected strictly for fraud prevention, logistics optimisation, and security purposes.\n\nThird-Party Sources: We may collect data from partners, service providers, professional representatives, and regulatory authorities, all under lawful compliance.",
+    },
+    {
+      h: "2. How We Use Your Data",
+      t: "We use your personal information for the following purposes:\n\n• Service delivery and fulfilment across our distribution, merchandising, key account management, and private label operations\n• Legal and regulatory compliance\n• Fraud prevention and security monitoring\n• Marketing and personalisation (with your consent)\n• Recruitment and talent management\n• Analytics to improve our services and your experience\n\nLawful Basis: Consent, contract performance, compliance with law, and legitimate interests (e.g., fraud prevention and operational improvement).",
+    },
+    {
+      h: "3. Data Sharing",
+      t: "We may share your data with regulatory authorities, service providers, retail and brand partners, logistics operators, and other parties as required by law. All third parties are bound by confidentiality agreements and POPIA compliance. We never sell your personal data to third parties.",
+    },
+    {
+      h: "4. Data Retention",
+      t: "Personal Identifiers: Up to 7 years after the end of the business relationship.\n\nFinancial Records: 7 years (regulatory compliance).\n\nSensitive Data: Retained only as long as necessary for the purpose for which it was collected.\n\nDigital Data: Retained for up to 2 years for analytics purposes.",
+    },
+    {
+      h: "5. Your Rights",
+      t: "You have rights under Section 23 of POPIA, including:\n\n• Access to your personal information\n• Correction of inaccurate or incomplete data\n• Deletion of personal information where applicable\n• Objection to the processing of your data\n• Right to be informed about data collection\n• Consent management and withdrawal\n• Right to complain to the Information Regulator\n• Right not to be subject to automated decision-making",
+    },
+    {
+      h: "6. Security Measures",
+      t: "We apply industry-standard encryption, strict access controls, regular security audits, penetration testing, and 24/7 monitoring across all our systems and operations in 47+ countries.",
+    },
+    {
+      h: "7. Cookies and Tracking",
+      t: "Cookies are used for secure session management, analytics, and enhancing user experience. Preferences can be managed via your browser settings or our cookie management options.",
+    },
+    {
+      h: "8. International Data Transfers",
+      t: "Given our operations across 47+ countries, data may be transferred outside South Africa under Section 72 of POPIA, with adequate safeguards and protections in place to ensure your data remains secure.",
+    },
+    {
+      h: "9. Updates to this Policy",
+      t: "We may update this policy periodically. The latest version will always be available on our website at rajaton.co.za.",
+    },
+    {
+      h: "10. Contact Us",
+      t: "Information Officer\nRajaton Brand Solutions (Pty) Ltd\nSandton, Johannesburg\nSouth Africa\n\nEmail: privacy@rajaton.co.za\nWebsite: rajaton.co.za",
+    },
+  ];
+
+  const TERMS_SECTIONS = [
+    {
+      h: "Introduction",
+      t: "These Terms and Conditions (\"Terms\") govern your use of the Rajaton Brand Solutions website (rajaton.co.za) and any services provided by Rajaton Brand Solutions (Pty) Ltd and its subsidiaries (collectively, \"Rajaton\", \"we\", \"our\", or \"us\"). By accessing or using our website, you agree to be bound by these Terms. If you do not agree, please do not use our website.",
+    },
+    {
+      h: "1. Use of the Website",
+      t: "You may use this website for lawful purposes only. You agree not to:\n\n• Use the website in any way that violates applicable local, national, or international law\n• Transmit or procure the sending of any unsolicited advertising or promotional material\n• Attempt to gain unauthorised access to any part of the website, server, or database\n• Use the website to collect or harvest personal information of other users\n• Interfere with or disrupt the integrity or performance of the website",
+    },
+    {
+      h: "2. Intellectual Property",
+      t: "All content on this website — including but not limited to text, graphics, logos, images, videos, the Rajaton brand identity, and software — is the property of Rajaton Brand Solutions (Pty) Ltd or its licensors and is protected by South African and international intellectual property laws.\n\nYou may not reproduce, distribute, modify, or create derivative works from any content without our prior written consent.",
+    },
+    {
+      h: "3. Services and Information",
+      t: "The information provided on this website about our services — including key account management, merchandising, distribution & logistics, and private label development — is for general informational purposes only. It does not constitute a binding offer or contract.\n\nAll service engagements are subject to separate commercial agreements between Rajaton and the relevant parties.",
+    },
+    {
+      h: "4. Third-Party Links",
+      t: "Our website may contain links to third-party websites or services that are not owned or controlled by Rajaton. We assume no responsibility for the content, privacy policies, or practices of any third-party sites. You access them at your own risk.",
+    },
+    {
+      h: "5. Limitation of Liability",
+      t: "To the fullest extent permitted by law, Rajaton shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the website, even if we have been advised of the possibility of such damages.\n\nOur total liability for any claim arising from these Terms or your use of the website shall not exceed the amount you paid to us, if any, in the 12 months preceding the claim.",
+    },
+    {
+      h: "6. Disclaimer of Warranties",
+      t: "This website is provided on an \"as is\" and \"as available\" basis without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.\n\nWe do not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.",
+    },
+    {
+      h: "7. Indemnification",
+      t: "You agree to indemnify and hold harmless Rajaton, its directors, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses arising from your use of the website or violation of these Terms.",
+    },
+    {
+      h: "8. Privacy",
+      t: "Your use of the website is also governed by our Privacy Policy, which outlines how we collect, use, and protect your personal information in compliance with the Protection of Personal Information Act 4 of 2013 (POPIA).",
+    },
+    {
+      h: "9. Governing Law",
+      t: "These Terms are governed by and construed in accordance with the laws of the Republic of South Africa. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts of South Africa.",
+    },
+    {
+      h: "10. Changes to These Terms",
+      t: "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting on the website. Your continued use of the website after any changes constitutes acceptance of the updated Terms.",
+    },
+    {
+      h: "11. Contact Us",
+      t: "If you have any questions about these Terms, please contact us:\n\nRajaton Brand Solutions (Pty) Ltd\nSandton, Johannesburg\nSouth Africa\n\nEmail: legal@rajaton.co.za\nWebsite: rajaton.co.za",
+    },
+  ];
+
+  const COOKIE_SECTIONS = [
+    {
+      h: "About This Cookie Policy",
+      t: "This Cookie Policy explains how Rajaton Brand Solutions (Pty) Ltd (\"Rajaton\", \"we\", \"our\", or \"us\") uses cookies and similar tracking technologies when you visit our website at rajaton.co.za. This policy should be read alongside our Privacy Policy.",
+    },
+    {
+      h: "1. What Are Cookies?",
+      t: "Cookies are small text files placed on your device when you visit a website. They help the website recognise your device and remember information about your visit, such as your preferences and settings. Cookies can be \"session\" cookies (deleted when you close your browser) or \"persistent\" cookies (remaining on your device for a set period).",
+    },
+    {
+      h: "2. Essential Cookies",
+      t: "These cookies are strictly necessary for the website to function and cannot be disabled. They enable core functionality such as:\n\n• Session management and secure navigation\n• Theme preferences (dark/light mode)\n• Cookie consent preferences\n• Security and fraud prevention\n\nWithout these cookies, the website cannot function properly.",
+    },
+    {
+      h: "3. Analytics Cookies",
+      t: "We use analytics cookies to collect anonymous usage data that helps us understand how visitors interact with our website. This data includes:\n\n• Pages visited and time spent on each page\n• Navigation paths through the site\n• Device type, browser, and operating system\n• Referring website or source\n\nThis information is aggregated and anonymised, and is used solely to improve our website and user experience.",
+    },
+    {
+      h: "4. Marketing Cookies",
+      t: "With your consent, we may use marketing cookies to:\n\n• Deliver relevant advertisements based on your interests\n• Track the effectiveness of our marketing campaigns\n• Limit the number of times you see a specific advertisement\n• Help us measure the reach and engagement of our content\n\nThese cookies may be set by third-party advertising partners.",
+    },
+    {
+      h: "5. Third-Party Cookies",
+      t: "Some cookies on our website are placed by third-party services we use, such as analytics providers and embedded content platforms. These third parties have their own privacy and cookie policies, and we encourage you to review them. We do not control these cookies.",
+    },
+    {
+      h: "6. Managing Your Cookie Preferences",
+      t: "You can manage your cookie preferences in the following ways:\n\n• Browser Settings: Most browsers allow you to block or delete cookies through their settings menu.\n• Cookie Banner: When you first visit our website, you can choose to accept or manage cookie preferences.\n• Opt-Out Links: Some third-party cookies offer direct opt-out mechanisms.\n\nPlease note that disabling certain cookies may affect the functionality and your experience of our website.",
+    },
+    {
+      h: "7. Data Retention",
+      t: "Cookie data is retained for varying periods depending on the type:\n\n• Essential cookies: Duration of your session or up to 1 year\n• Analytics cookies: Up to 2 years\n• Marketing cookies: Up to 1 year\n\nYou can clear cookies at any time through your browser settings.",
+    },
+    {
+      h: "8. Updates to This Policy",
+      t: "We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our business operations. The latest version will always be available on our website.",
+    },
+    {
+      h: "9. Contact Us",
+      t: "If you have any questions about our use of cookies, please contact us:\n\nRajaton Brand Solutions (Pty) Ltd\nSandton, Johannesburg\nSouth Africa\n\nEmail: privacy@rajaton.co.za\nWebsite: rajaton.co.za",
+    },
+  ];
+
+  const sections = type === "privacy" ? PRIVACY_SECTIONS : type === "terms" ? TERMS_SECTIONS : COOKIE_SECTIONS;
 
   return (
     <motion.div
@@ -576,7 +685,7 @@ export function PolicyModal({ type, onClose }) {
         initial={{ scale: 0.92, y: 20 }}
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.92, y: 20 }}
-        className="glass-dark rounded-3xl max-w-lg w-full max-h-[80vh] overflow-y-auto shadow-2xl"
+        className="glass-dark rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 glass-dark border-b border-border px-7 py-5 flex items-center justify-between rounded-t-3xl z-10">
@@ -599,11 +708,11 @@ export function PolicyModal({ type, onClose }) {
               <h3 className="text-fg font-semibold text-sm  mb-1.5">
                 {s.h}
               </h3>
-              <p className="text-fg-4 text-sm leading-relaxed">{s.t}</p>
+              <p className="text-fg-4 text-sm leading-relaxed whitespace-pre-line">{s.t}</p>
             </div>
           ))}
           <p className="text-fg-4 text-xs pt-4 border-t border-border">
-            Last updated: February 2026 · Rajaton Global Ltd.
+            Last updated: April 2026 · Rajaton Brand Solutions (Pty) Ltd.
           </p>
         </div>
       </motion.div>
